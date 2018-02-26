@@ -1,23 +1,68 @@
+<div class="row" id="headerRow">
+  <nav class="navbar navbar-light">
+    <div class="col">
+      <h1>IMDB</h1>
+    </div>
+    <div class="row" id="navTopRow">
+    <div class="col-9">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
+        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+          <option selected>All</option>
+          <option value="1">Titles</option>
+          <option value="2">Names</option>
+        </select>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <span class="oi oi-magnifying-glass"></span>
+        </button>
+      </form>
+      <ul class="nav nav-tabs">
+          <li ngbDropdown class="nav-item d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Movies, TV &amp; Showtimes</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button class="dropdown-item">Action - 1</button>
+              <button class="dropdown-item">Another Action</button>
+              <button class="dropdown-item">Something else is here</button>
+            </div>
+          </li>
+          <li ngbDropdown class="nav-item d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Celebs, Events &amp; Photos</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button class="dropdown-item">Action - 1</button>
+              <button class="dropdown-item">Another Action</button>
+              <button class="dropdown-item">Something else is here</button>
+            </div>
+          </li>
+          <li ngbDropdown class="nav-item d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>News &amp; Community
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button class="dropdown-item">Action - 1</button>
+              <button class="dropdown-item">Another Action</button>
+              <button class="dropdown-item">Something else is here</button>
+            </div>
+          </li>
+          <li ngbDropdown class="nav-item d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Watchlist</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button class="dropdown-item">Action - 1</button>
+              <button class="dropdown-item">Another Action</button>
+              <button class="dropdown-item">Something else is here</button>
+            </div>
+          </li>
+        </ul>
+    </div>
+    <div class="col">
+      Other stuff...
+    </div>
+    </div>
+  </nav>
+</div>
+
 <div class="row">
   <div class="col">
-    <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button class="dropdown-item">Action - 1</button>
-        <button class="dropdown-item">Another Action</button>
-        <button class="dropdown-item">Something else is here</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="col text-right">
-    <div ngbDropdown placement="top-right" class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Toggle dropup</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-        <button class="dropdown-item">Action - 1</button>
-        <button class="dropdown-item">Another Action</button>
-        <button class="dropdown-item">Something else is here</button>
-      </div>
-    </div>
+    <ngb-rating [(rate)]="currentRate"></ngb-rating>
+    <hr>
+    <pre>Rate: <b>{{currentRate}}</b></pre>
   </div>
 </div>
