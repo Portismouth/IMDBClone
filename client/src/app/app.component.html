@@ -1,24 +1,35 @@
-<div class="row" id="headerRow">
-  <nav class="navbar navbar-light">
-    <div class="col">
-      <h1>IMDB</h1>
-    </div>
+<nav class="navbar navbar-light row" id="headerRow">
+  <div class="col-1">
+    <h3>IMDB</h3>
+  </div>
+  <div class="col-11">
     <div class="row" id="navTopRow">
-    <div class="col-9">
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
-        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
-          <option selected>All</option>
-          <option value="1">Titles</option>
-          <option value="2">Names</option>
-        </select>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          <span class="oi oi-magnifying-glass"></span>
-        </button>
-      </form>
-      <ul class="nav nav-tabs">
+      <div class="col-8">
+        <form class="form-inline" id="searchForm">
+          <input class="form-control mr-sm-2" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
+          <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="searchFilter">
+            <option selected>All</option>
+            <option value="1">Titles</option>
+            <option value="2">Names</option>
+          </select>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+      <div class="col">
+          <a href="#">Help</a>
+          <button type="button" class="circle btn btn-outline-dark"><i class="fab fa-facebook-f"></i></button>
+          <button type="button" class="circle btn btn-outline-dark"><i class="fab fa-twitter"></i></button>
+          <button type="button" class="circle btn btn-outline-dark"><i class="fab fa-instagram"></i></button>
+      </div>
+    </div>
+    <div class="row" id="navBottomRow">
+      <div class="col-8">
+        <ul id="dropNav" class="nav">
           <li ngbDropdown class="nav-item d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Movies, TV &amp; Showtimes</button>
+            <button class="btn btn-dark" id="dropdownBasic1" ngbDropdownToggle>Movies, TV
+              <br>&amp; Showtimes</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <button class="dropdown-item">Action - 1</button>
               <button class="dropdown-item">Another Action</button>
@@ -26,7 +37,8 @@
             </div>
           </li>
           <li ngbDropdown class="nav-item d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Celebs, Events &amp; Photos</button>
+            <button class="btn btn-dark" id="dropdownBasic1" ngbDropdownToggle>Celebs, Events
+              <br>&amp; Photos</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <button class="dropdown-item">Action - 1</button>
               <button class="dropdown-item">Another Action</button>
@@ -34,7 +46,8 @@
             </div>
           </li>
           <li ngbDropdown class="nav-item d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>News &amp; Community
+            <button class="btn btn-dark" id="dropdownBasic1" ngbDropdownToggle>News &amp;
+              <br>Community
             </button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <button class="dropdown-item">Action - 1</button>
@@ -42,8 +55,8 @@
               <button class="dropdown-item">Something else is here</button>
             </div>
           </li>
-          <li ngbDropdown class="nav-item d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Watchlist</button>
+          <li ngbDropdown class="nav-item d-inline-block last">
+            <button class="btn btn-dark" id="dropdownBasic1" ngbDropdownToggle>Watchlist</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <button class="dropdown-item">Action - 1</button>
               <button class="dropdown-item">Another Action</button>
@@ -51,18 +64,11 @@
             </div>
           </li>
         </ul>
+      </div>
+      <div class="col">
+          <button type="button" class="btn btn-primary btn-sm"><i class="fab fa-facebook-f"></i> Sign in with Facebook</button>
+          <a href="#">Sign in without Facebook</a>
+      </div>
     </div>
-    <div class="col">
-      Other stuff...
-    </div>
-    </div>
-  </nav>
-</div>
-
-<div class="row">
-  <div class="col">
-    <ngb-rating [(rate)]="currentRate"></ngb-rating>
-    <hr>
-    <pre>Rate: <b>{{currentRate}}</b></pre>
   </div>
-</div>
+</nav>

@@ -1,0 +1,38 @@
+nav {
+    background:linear-gradient(to bottom, #646464 0%,#0e0e0e 100%);
+}
+nav h3 {
+    color:#fff;
+}
+.circle {
+    border-radius: 100%;
+}
+#searchForm {
+    width:100%;
+}
+#searchForm input {
+    width:60%;
+}
+#searchFilter {
+    width:20%;
+}
+#dropNav {
+    width:100%;
+}
+#dropNav li::before, #dropNav li.last::after {
+    content: "";
+    display:inline-block;
+    vertical-align: middle;
+    height:4rem;
+    background-color: white;
+    width:1px;
+}
+#dropNav li {
+   align-self: center;
+}
+#dropNav li .btn {
+    background-color: transparent;
+    border:none;
+    text-align: left;
+    line-height:1.2em;
+}
