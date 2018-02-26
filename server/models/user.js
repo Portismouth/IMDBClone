@@ -3,6 +3,13 @@ var Schema = mongoose.Schema;
 var bcrypt = require("bcrypt-as-promised");
 var uniqueValidator = require("mongoose-unique-validator");
 
+var watchlistSchema = new Schema({
+    //title
+    //private: bool - default to true
+    //allowComment: default to false
+    //comments: []
+});
+
 var userSchema = new Schema({
     //name
     name: {
@@ -30,18 +37,34 @@ var userSchema = new Schema({
         maxlength: 32,
     },
     //description
-    desc: {
-        type: String
-    },
-    ratings: {
-        //movie id
-        //rating: number
-    },
-
-
-
-    //reviews - []
-    //ratings - []
-    //watchlist - [] 
-    //picture?
+    // desc: {
+    //     type: String
+    // }
+    // ratings: {
+    //     //movie id
+    //     //rating: number
+    // },
+    // reviews: [{type: Schema.Types.ObjectId, ref: 'Reviews'}],
+    // watchlist: [watchlistSchema]
+    // //reviews - []
+    // //ratings - []
+    // //watchlist - [] 
+    // //picture?
 }, { timestamps: true });
+
+userSchema.pre("save", function (next) {
+    console.log("============= user trying to save===============");
+
+    //bcrypt password
+    bcrypt.hash(this.password, 10)
+        .then(hashedPassword => {
+            console.log("=============hashing=================");
+            this.password = hashedPassword;
+            next();
+        }).catch(error => {
+            next();
+        });
+});
+
+userSchema.plugin(uniqueValidator, { message: "This email is already registered. Try logging in." });
+mongoose.model("User", userSchema);

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Register</h3>
+      <div *ngIf="displayErr == true">
+        <div *ngFor="let x of regErrors" class="alert alert-danger" role="alert">
+          {{x}}
+        </div>
+      </div>
+      <form (submit)="registerNewUser()">
+        <div class="form-group">
+          <label for="name">First Name</label>
+          <input type="text" class="form-control" name="registerForm.name" [(ngModel)]="registerForm.name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="registerForm.email" [(ngModel)]="registerForm.email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="registerForm.password" [(ngModel)]="registerForm.password" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="passwordConf">Confirm Password</label>
+          <input type="password" class="form-control" name="registerForm.passwordConf" [(ngModel)]="registerForm.passwordConf" placeholder="Confirm Password">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Register">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <h3>Login</h3>
+      <form (submit)="loginUser()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="loginForm.email" [(ngModel)]="loginForm.email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="loginForm.password" [(ngModel)]="loginForm.password" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Login">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
