@@ -18,10 +18,14 @@
   },
   "homepage": "https://github.com/Portismouth/IMDBClone#readme",
   "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0",
     "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap-css-only": "^4.0.0",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
-    "mongoose": "^5.0.7"
+    "mongoose": "^5.0.7",
+    "mongoose-unique-validator": "^2.0.0"
   }
 }
