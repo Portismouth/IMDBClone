@@ -1,17 +1,31 @@
 nav {
     background:linear-gradient(to bottom, #646464 0%,#0e0e0e 100%);
+    color:#fff; 
 }
-nav h3 {
+nav a {
     color:#fff;
+}
+.row {
+    align-items: center;
+}
+.nav-aside {
+    font-size: .75em;
+    text-align: right;
 }
 .circle {
     border-radius: 100%;
+}
+#navBottomRow {
+    margin-top:2px;
+}
+#navBottomRow .nav-aside a {
+    text-decoration: underline;
 }
 #searchForm {
     width:100%;
 }
 #searchForm input {
-    width:60%;
+    width:70%;
 }
 #searchFilter {
     width:20%;
@@ -23,16 +37,21 @@ nav h3 {
     content: "";
     display:inline-block;
     vertical-align: middle;
-    height:4rem;
+    height:3rem;
     background-color: white;
     width:1px;
 }
 #dropNav li {
    align-self: center;
+   padding:0px 5px;
 }
 #dropNav li .btn {
     background-color: transparent;
     border:none;
     text-align: left;
     line-height:1.2em;
+}
+#fbSignInBtn {
+    font-size: .9em;
+    font-weight: bold;
 }
