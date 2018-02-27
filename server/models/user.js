@@ -36,20 +36,19 @@ var userSchema = new Schema({
         minlength: [8, "Password must be at least 8 characters."],
         maxlength: 32,
     },
-    //description
-    // desc: {
-    //     type: String
-    // }
+    // description
+    desc: {
+        type: String
+    },
+    // //reviews
+    reviews: [{ type: Schema.Types.ObjectId, ref: 'Reviews' }],
+    watchlist: [{ type: Schema.Types.ObjectId, ref: 'Watch' }]
+    // //ratings - []
+    // //picture?
     // ratings: {
     //     //movie id
     //     //rating: number
     // },
-    // reviews: [{type: Schema.Types.ObjectId, ref: 'Reviews'}],
-    // watchlist: [watchlistSchema]
-    // //reviews - []
-    // //ratings - []
-    // //watchlist - [] 
-    // //picture?
 }, { timestamps: true });
 
 userSchema.pre("save", function (next) {
