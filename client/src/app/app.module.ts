@@ -13,11 +13,14 @@ import { RegistrationComponent } from './registration/registration.component';
 //Services
 import { HttpService } from './http.service';
 import { LocalService } from './local.service';
+import { UserComponent } from './user/user.component';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    UserComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -28,6 +31,7 @@ import { LocalService } from './local.service';
   ],
   providers: [
     NgbModule,
+    AuthService,
     HttpService,
     LocalService],
   bootstrap: [
