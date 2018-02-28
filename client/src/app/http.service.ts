@@ -48,6 +48,19 @@ export class HttpService {
 
   popularReleased() {
     //find better source pulls netflix releases...
-    return this._http.get('https://api.themoviedb.org/3/discover/movie?api_key=96cb0a91c72f14a27b23bdca3fff49ea&language=en-US&region=US&include_adult=false&include_video=false&page=1&primary_release_date.gte=2018-01-24&primary_release_date.lte=2018-02-26&vote_count.gte=50');
+    var start = new Date();
+    var end = new Date();
+
+    start.setDate(start.getDate() - 30);
+
+    var startYear = start.getFullYear();
+    var startMonth = start.getMonth() < 10 ? '0' + (start.getMonth() + 1) : start.getMonth() + 1;
+    var startDate = start.getDate() < 10 ? '0' + start.getDate() : start.getDate();
+
+    var endYear = end.getFullYear();
+    var endMonth = end.getMonth() < 10 ? '0' + (end.getMonth() + 1) : (end.getMonth() + 1);
+    var endDate = end.getDate() < 10 ? '0' + end.getDate() : end.getDate();
+
+    return this._http.get(`https://api.themoviedb.org/3/discover/movie?api_key=96cb0a91c72f14a27b23bdca3fff49ea&language=en-US&region=US&include_adult=false&include_video=false&page=1&primary_release_date.gte=${startYear}-${startMonth}-${startDate}&primary_release_date.lte=${endYear}-${endMonth}-${endDate}&vote_count.gte=50`);
   }
 }
