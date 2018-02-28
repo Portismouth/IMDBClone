@@ -8,23 +8,26 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Components
 import { AppComponent } from './app.component';
+import { MovieComponent } from './movie/movie.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ResultsComponent } from './results/results.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { UserComponent } from './user/user.component';
 
 //Services
 import { HttpService } from './http.service';
 import { LocalService } from './local.service';
-import { UserComponent } from './user/user.component';
 import { AuthService } from './auth.service';
+import { MovieService } from './movie.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     ResultsComponent,
-    NavigationComponent
-    UserComponent
+    NavigationComponent,
+    UserComponent,
+    MovieComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -37,7 +40,9 @@ import { AuthService } from './auth.service';
     NgbModule,
     AuthService,
     HttpService,
-    LocalService],
+    LocalService,
+    MovieService
+  ],
   bootstrap: [
     AppComponent
   ]

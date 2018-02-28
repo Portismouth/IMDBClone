@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-8">
+    <div class="col-12">
+      <iframe width="670" height="377" src="https://www.youtube.com/embed/SUXWAEX2jlg" frameborder="0" allow="autoplay;   encrypted-media"
+        allowfullscreen></iframe>
+      <br>
+    </div>
+    <div class="row">
+      <nav class="nav">
+        <a class="nav-link active" href="#">FULL CAST AND CREW</a>
+        <a class="nav-link" href="#">TRIVIA</a>
+        <a class="nav-link" href="#">USER REVIEWS</a>
+        <a class="nav-link" href="#">MORE</a>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-1">
+
+      </div>
+      <div class="col-7">
+        <div class="row">
+          <h2 style="margin: 0">{{movie.title}}
+            <span>
+              <h4 style="display: inline-block">(year)</h4>
+            </span>
+          </h2>
+        </div>
+        <div class="row">
+          <p class="small" style="margin: 0;">R | {{movie.runtime}} min |
+            <a href="#">category</a>,
+            <a href="#">category</a> |
+            <a href="#">{{movie.release_date}}</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-4">
+        <p>Rating Stuff</p>
+      </div>
+    </div>
+    <div class="row">
+      <img src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" />
+      {{stars}}
+    </div>
+  </div>
+</div>
