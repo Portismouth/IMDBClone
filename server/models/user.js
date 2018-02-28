@@ -34,7 +34,7 @@ var userSchema = new Schema({
         type: String,
         required: [true, "Enter a password!"],
         minlength: [8, "Password must be at least 8 characters."],
-        maxlength: 32,
+        maxlength: 1000,
     },
     // description
     desc: {

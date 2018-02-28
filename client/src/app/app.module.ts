@@ -15,6 +15,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 //Services
 import { HttpService } from './http.service';
 import { LocalService } from './local.service';
+import { UserComponent } from './user/user.component';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { LocalService } from './local.service';
     RegistrationComponent,
     ResultsComponent,
     NavigationComponent
+    UserComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -32,6 +35,7 @@ import { LocalService } from './local.service';
   ],
   providers: [
     NgbModule,
+    AuthService,
     HttpService,
     LocalService],
   bootstrap: [

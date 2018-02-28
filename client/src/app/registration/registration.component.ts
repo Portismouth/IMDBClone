@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalService } from '../local.service';
+import { AuthService } from '../auth.service';
+import { ActivatedRoute, Params, Router, Route } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -8,7 +9,10 @@ import { LocalService } from '../local.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private _local: LocalService) { }
+  constructor(
+    private _auth: AuthService,
+    private _router: Router
+  ) { }
 
   registerForm = {
     email: "",
@@ -31,7 +35,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   registerNewUser() {
-    let registration = this._local.sendNewUser(this.registerForm);
+    let registration = this._auth.sendNewUser(this.registerForm);
     registration.subscribe(res => {
       if (res["message"] != "success") {
         for (let error in res) {
@@ -40,21 +44,25 @@ export class RegistrationComponent implements OnInit {
         };
       } else {
         this.user = res["user"];
+        this._router.navigate(['/user']);
       }
     });
   }
 
   loginUser() {
-    let login = this._local.loginUser(this.loginForm);
+    let login = this._auth.loginUser(this.loginForm);
     login.subscribe(res => {
       if (res["message"] != "success") {
+        console.log(res)
         for (let error in res) {
           this.logErrors.push(res[error].message);
           this.displayErr = true;
         };
       } else {
         this.user = res["user"];
+        this._router.navigate(['/user']);
       }
+      console.log(this.user)
     });
   }
 }
