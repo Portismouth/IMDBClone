@@ -8,10 +8,17 @@ export class HttpService {
   constructor(private _http: HttpClient) { }
 
   apiKey = '96cb0a91c72f14a27b23bdca3fff49ea'
+  results = [];
 
   search(query, type) {
     console.log(query)
-    return this._http.get('https://api.themoviedb.org/3/search/' + type + '?api_key=' + this.apiKey + '&language=en-US&query=' + query + '&page=1&include_adult=false&region=US')
+    let result = this._http.get('https://api.themoviedb.org/3/search/' + type + '?api_key=' + this.apiKey + '&language=en-US&query=' + query + '&page=1&include_adult=false&region=US')
+    result.subscribe(res => {
+      for (let result in res["results"]) {
+        this.results.push(res["results"][result]);
+      }
+    });
+    return this.results;
   }
 
   moviesWithActor() {

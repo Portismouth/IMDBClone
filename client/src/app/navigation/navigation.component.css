@@ -1,0 +1,57 @@
+nav {
+    background:linear-gradient(to bottom, #646464 0%,#0e0e0e 100%);
+    color:#fff; 
+}
+nav a {
+    color:#fff;
+}
+.row {
+    align-items: center;
+}
+.nav-aside {
+    font-size: .75em;
+    text-align: right;
+}
+.circle {
+    border-radius: 100%;
+}
+#navBottomRow {
+    margin-top:2px;
+}
+#navBottomRow .nav-aside a {
+    text-decoration: underline;
+}
+#searchForm {
+    width:100%;
+}
+#searchForm input {
+    width:70%;
+}
+#searchFilter {
+    width:20%;
+}
+#dropNav {
+    width:100%;
+}
+#dropNav li::before, #dropNav li.last::after {
+    content: "";
+    display:inline-block;
+    vertical-align: middle;
+    height:3rem;
+    background-color: white;
+    width:1px;
+}
+#dropNav li {
+   align-self: center;
+}
+#dropNav li .btn {
+    background-color: transparent;
+    border:none;
+    text-align: left;
+    font-size: .9em;
+    line-height:1.2em;
+}
+#fbSignInBtn {
+    font-size: .9em;
+    font-weight: bold;
+}

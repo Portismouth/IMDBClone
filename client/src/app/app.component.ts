@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { ResultsComponent } from './results/results.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @Component({
   selector: 'app-root',
@@ -9,30 +11,11 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
 
   constructor(private _httpService: HttpService) { }
-
   movieList = [];
 
   ngOnInit() {
-    this.searchResultsFromService("fight club");
     this.currentWeekReleaseFromService();
     this.alreadyOutFromService();
-  }
-
-  searchResultsFromService(query, type?) {
-    if (query.includes(" ")) {
-      query = encodeURIComponent(query.trim())
-    }
-    if (type == "name"){
-      type = "person";
-    } else if (type == "title"){
-      type = "movie"
-    } else {
-      type = "multi";
-    }
-    let result = this._httpService.search(query, type)
-    result.subscribe(res => {
-      console.log(res);
-    });
   }
 
   currentWeekReleaseFromService(){

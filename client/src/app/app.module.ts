@@ -9,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //Components
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ResultsComponent } from './results/results.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 //Services
 import { HttpService } from './http.service';
@@ -20,6 +22,8 @@ import { AuthService } from './auth.service';
   declarations: [
     AppComponent,
     RegistrationComponent,
+    ResultsComponent,
+    NavigationComponent
     UserComponent
   ],
   imports: [
