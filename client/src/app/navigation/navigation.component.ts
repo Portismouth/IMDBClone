@@ -42,7 +42,7 @@ export class NavigationComponent implements OnInit {
             $('#autocomplete').html('');
             data['results'].forEach(result => {
               if (result['name'] !== undefined) {
-                $('#autocomplete').append('<li class="autocomplete">' + result['name'] + '</li>');
+                $('#autocomplete').append('<li>' + result['name'] + '</li>');
               }
             });
           });
