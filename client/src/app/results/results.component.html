@@ -1,9 +1,19 @@
+<h2>Results for "QUERY"</h2>
+  <p><sub>Jump to: <a href="#">Titles</a> | <a href="#">Names</a></sub></p>
+  <h3 class="result">Titles</h3>
+<div class="table-container">
 <table class="table table-striped">
   <tbody >
     <tr *ngFor="let results of resultsList">
-      <td>{{results.title}}></td>
+      <td><img src="https://image.tmdb.org/t/p/w45{{results.poster_path}}" alt="{{results.title}}"/></td>
+      <td>
+        <a href="#">{{results.title || results.original_name}}</a> ({{results.release_date?.split("-")[0]}})
+      </td>
     </tr>
   </tbody>
 </table>
+</div>
+<div class="view-more">View: <a href="#"><strong>More title matches</strong></a></div>
+<h3 class="result">Names</h3>
 
 <router-outlet></router-outlet>

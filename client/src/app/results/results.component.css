@@ -1,0 +1,22 @@
+.table td, .table th {
+    padding:2px;
+    vertical-align: middle;
+}
+
+.table-container {
+    width:60%;
+    max-height:131px;
+    overflow-y:hidden;
+}
+
+img {
+    height:60px;
+}
+
+.view-more {
+    font-size:.75em;
+    width:60%;
+    padding:5px 10px;
+    background-color:rgba(0,0,0,.05);
+    border-radius: 0px 0px 10px 10px;
+}
