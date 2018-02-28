@@ -92,8 +92,7 @@ export class NavigationComponent implements OnInit {
     if (type == "name") {
       type = "person";
     } else if (type == "title") {
-      type = "movie",
-        type = "tv"
+      type = "tv";
     } else {
       type = "multi";
     }

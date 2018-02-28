@@ -16,7 +16,7 @@
               <img src="https://image.tmdb.org/t/p/w45{{results.poster_path}}" alt="{{results.title}}" />
             </td>
             <td *ngIf="results.poster_path == null">
-                <img src="assets/media_blank.png" alt="{{results.title}} width="40" height="60"" />
+                <img src="assets/media_blank.png" alt="{{results.title}}" width="40" height="60" />
               </td>
             <td>
               <a href="#">{{results.title || results.original_name}}</a> ({{results.release_date?.split("-")[0] || results.first_air_date?.split("-")[0]}})
