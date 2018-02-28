@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
       for(let x in res["results"]){
         this.movieList.push(res["results"][x]["title"])
       }
-      console.log(this.movieList)
+      console.log(this.movieList);
       // let movies = res['results'];
       // movies.sort(function (a, b) {
       //   return b.vote_average - a.vote_average

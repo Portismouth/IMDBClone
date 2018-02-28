@@ -6,10 +6,13 @@ export class LocalService {
 
   constructor(private _http: HttpClient) { }
 
-  sendNewUser(newUser) {
-    return this._http.post('/register', newUser);
+  getUser(userId) {
+    return this._http.get('/user/' + userId)
   }
-  loginUser(loginReq) {
-    return this._http.post('/login', loginReq);
+
+  submitReviewToDb(userId, review){
+    console.log(userId, review);
+    return this._http.post('/user/' + userId, review);
   }
+
 }
