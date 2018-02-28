@@ -79,28 +79,31 @@ module.exports = {
             })
     },
     submitReview: function (req, res) {
-        User.findById(req.params.id, function (err, user) {
-            console.log(user)
-            if (err) {
-                res.send(err);
-            } else {
-                let newReview = new Review({
-                    movieId: req.body.movieId,
-                    title: req.body.title,
-                    text: req.body.text,
-                    rating: req.body.rating
-                })
-                newReview._user = user;
-                console.log(newReview);
-                newReview.save(function (err) {
+        let newReview = new Review({
+            movieId: req.body.movieId,
+            title: req.body.title,
+            text: req.body.text,
+            rating: req.body.rating
+        });
+        console.log(newReview);
+        if (newReview.errors) {
+            console.log("line 90")
+            res.send(newReview.errors);
+        } else {
+            console.log("line 93")
+            newReview._user = req.params.id;
+            User.findByIdAndUpdate(req.params.id,
+                { $push: { reviews: newReview } },
+                { safe: true, upsert: true, new: true },
+                function (err, user) {
+                    console.log("line 99")
                     if (err) {
-                        console.log("line 97")
-                        res.send(newReview.errors);
+                        res.send(err);
                     } else {
                         res.send(user);
                     }
-                })
-            }
-        })
+                }
+            );
+        }
     }
 }
