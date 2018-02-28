@@ -17,6 +17,7 @@ import { HttpService } from './http.service';
 import { LocalService } from './local.service';
 import { UserComponent } from './user/user.component';
 import { AuthService } from './auth.service';
+import { ReleasesComponent } from './releases/releases.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthService } from './auth.service';
     RegistrationComponent,
     ResultsComponent,
     NavigationComponent,
-    UserComponent
+    UserComponent,
+    ReleasesComponent
   ],
   imports: [
     NgbModule.forRoot(),
