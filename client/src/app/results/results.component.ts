@@ -7,11 +7,11 @@ import { HttpService } from '../http.service';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
+  query: any;
   resultsList: any;
   constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
-    console.log(this._httpService.results);
     this.resultsList = this._httpService.results;
   }
 

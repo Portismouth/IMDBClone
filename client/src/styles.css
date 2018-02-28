@@ -3,5 +3,10 @@ body {
 }
 #content {
     background-color:#fff;
-    height:700px;
+    height:auto;
+    padding-bottom:50px;
+}
+
+.small-txt {
+    font-size: .75em;
 }
