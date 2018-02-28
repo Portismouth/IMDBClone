@@ -1,3 +1,7 @@
 body {
     background-color:#000;
 }
+#content {
+    background-color:#fff;
+    height:700px;
+}
