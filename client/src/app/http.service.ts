@@ -11,7 +11,6 @@ export class HttpService {
   results = [];
 
   search(query, type) {
-    console.log(query)
     let result = this._http.get('https://api.themoviedb.org/3/search/' + type + '?api_key=' + this.apiKey + '&language=en-US&query=' + query + '&page=1&include_adult=false&region=US')
     result.subscribe(res => {
       for (let result in res["results"]) {

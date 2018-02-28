@@ -98,6 +98,7 @@ export class NavigationComponent implements OnInit {
       type = "multi";
     }
     let result = this._httpService.search(query, type);
+    console.log(result);
     //this.aTaskEventEmitter.emit(result);
   }
 
