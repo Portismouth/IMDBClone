@@ -84,7 +84,7 @@ export class MovieComponent implements OnInit {
     let certReq = this._movieService.getCertification(this.movieId);
     certReq.subscribe(res => {
       let result = res['results'].find(c => c.iso_3166_1 === "US");
-      this.certification = result['release_dates'].find(cert => cert.note === "");
+      this.certification = result['release_dates'].find(cert => cert.iso_639_1 === "");
     })
   }
 }
