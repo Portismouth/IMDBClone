@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-8">
     <div class="col-12">
-      <iframe width="670" height="377" src="https://www.youtube.com/embed/SUXWAEX2jlg" frameborder="0" allow="autoplay;   encrypted-media"
-        allowfullscreen></iframe>
-      <br>
+      <!-- <iframe width="670" height="377" src="https://www.youtube.com/embed/SUXWAEX2jlg" frameborder="0" allow="autoplay;   encrypted-media"
+        allowfullscreen></iframe> -->
+        <img src="https://image.tmdb.org/t/p/w780/{{movie.backdrop_path}}" />
     </div>
     <div class="row">
       <nav class="nav">
@@ -14,6 +14,11 @@
       </nav>
     </div>
     <div class="row">
+      <div *ngIf="authError == true">
+        <div class="alert alert-danger" role="alert">
+          <p>Please sign in</p>
+        </div>
+      </div>
       <div class="col-1 justify-content-center">
         <a (click)="addToWatchList($event)"><i class="material-icons" style="font-size: 3.5em; color: grey;" title="Add to watchlist">bookmark</i></a>
       </div>

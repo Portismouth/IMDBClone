@@ -17,6 +17,7 @@ export class MovieComponent implements OnInit {
   constructor(
     private _movieService: MovieService,
     private _localService: LocalService,
+    private _authService: AuthService,
     private _route: ActivatedRoute
   ) { }
 
@@ -26,6 +27,7 @@ export class MovieComponent implements OnInit {
   director;
   writers = [];
   certification = {};
+  authError: Boolean;
   movieId;
 
   ngOnInit() {
@@ -42,14 +44,16 @@ export class MovieComponent implements OnInit {
   getMovieFromService() {
     let movReq = this._movieService.getMovieById(this.movieId);
     movReq.subscribe(res => {
+      console.log(res);
       this.movie['movieId'] = res['id'];
       this.movie['title'] = res['title'];
       this.movie['overview'] = res['overview'];
       this.movie['poster_path'] = res['poster_path'];
       this.movie['runtime'] = res['runtime'];
       this.movie['release_date'] = res['release_date'];
-      this.movie['year'] = res['release_date'].substr(0, 4)
-      this.movie['genres'] = res['genres']
+      this.movie['year'] = res['release_date'].substr(0, 4);
+      this.movie['genres'] = res['genres'];
+      this.movie['backdrop_path'] = res['backdrop_path'];
     });
   }
 
@@ -108,9 +112,16 @@ export class MovieComponent implements OnInit {
   }
 
   addToWatchList(){
-    let add = this._localService.addToWatchList( "5a9848e6679aeb326c07cf9e", this.movie);
-    add.subscribe(res => {
-      console.log(res);
+    let authorize = this._authService.checkSession();
+    authorize.subscribe(res => {
+      if(res['status'] == true){
+        let add = this._localService.addToWatchList( "5a9848e6679aeb326c07cf9e", this.movie);
+        add.subscribe(res => {
+          console.log(res);
+        })
+      } else {
+        this.authError = true;
+      }
     })
   }
 }

@@ -45,7 +45,8 @@
             <div class="card" style="margin-top: 15px;">
                 <div class="card-block">
                     <h4 class="card-title">Your Reviews</h4>
-                    <p class="card-text">Loved or hated a movie or TV show? Write a review and share it with others!</p>
+                    <p *ngIf="userReviews.length === 0" class="card-text">Loved or hated a movie or TV show? Write a review and share it with others!</p>
+                    <h5 *ngFor="let review of userReviews"><a href="#">{{review.title}}</a></h5>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">
@@ -68,7 +69,7 @@
 
 
 
-<!-- <form (submit)="submitReview()">
+<form (submit)="submitReview()">
     <label for="rating">Rating</label>
     <input type="number" class="form-control" name="reviewForm.rating" [(ngModel)]="reviewForm.rating" placeholder="Rate this movie">
     <label for="title">Title</label>
@@ -77,4 +78,4 @@
     <textarea type="text" class="form-control" name="reviewForm.text" [(ngModel)]="reviewForm.text" placeholder="Your review title"></textarea>
     <button type="submit" class="btn btn-primary">Submit</button>
     <button [routerLink]="['/']" class="btn btn-secondary">Cancel</button>
-</form> -->
+</form>
