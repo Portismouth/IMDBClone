@@ -1,3 +1,7 @@
 * {
-    color: white;
+    /* color: white; */
+}
+
+.user-info > * {
+    margin: 0; 
 }
