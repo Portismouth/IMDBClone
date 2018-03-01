@@ -15,4 +15,9 @@ export class LocalService {
     return this._http.post('/user/' + userId, review);
   }
 
+  addToWatchList(userId, movieId){
+    // console.log(userId, movieId);
+    return this._http.post('/watchlist/' + userId, movieId);
+  }
+
 }

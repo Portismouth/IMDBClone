@@ -16,6 +16,7 @@ export class MovieComponent implements OnInit {
 
   constructor(
     private _movieService: MovieService,
+    private _localService: LocalService,
     private _route: ActivatedRoute
   ) { }
 
@@ -104,5 +105,12 @@ export class MovieComponent implements OnInit {
     recReq.subscribe(res => {
       console.log(res['results'])
     });
+  }
+
+  addToWatchList(){
+    let add = this._localService.addToWatchList( "5a9848e6679aeb326c07cf9e", this.movie);
+    add.subscribe(res => {
+      console.log(res);
+    })
   }
 }

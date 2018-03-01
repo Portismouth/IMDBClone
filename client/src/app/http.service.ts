@@ -16,6 +16,7 @@ export class HttpService {
       for (let result in res["results"]) {
         this.results.push(res["results"][result]);
       }
+      console.log(this.results)
     });
     return this.results;
   }
