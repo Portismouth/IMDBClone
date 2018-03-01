@@ -1,6 +1,75 @@
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <div class="row">
+                <div class="col-2">
+                    <div style="border: 1px solid black; height: 102px; width: 102px; display: inline-block">
+                        <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjQ4MTY5NzU2M15BMl5BanBnXkFtZTgwNDc5NTgwMTI@._V1_SY100_SX100_.jpg"
+                        />
+                    </div>
+                </div>
+                <div class="col-10 user-info">
+                    <h2>{{user.name}}</h2>
+                    <p class="small">Member since...{{user.memberSince}}</p>
+                    <a href="#">Edit Description</a>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 15px;">
+                <div class="card-block">
+                    <h4 class="card-title">Your Watchlist</h4>
+                    <div style="display: inline-block; margin: 5px">
+                        <a href="#">
+                            <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BZWYxODViMGYtMGE2ZC00ZGQ3LThhMWUtYTVkNGE3OWU4NWRkL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMjYwNDA2MDE@._V1_SX140_CR0,0,140,209_.jpg"
+                            />
+                        </a>
+                        <p class="small">
+                            <a href="#">Link to movie</a>
+                        </p>
+                    </div>
+                    <div style="display: inline-block; margin: 5px">
+                        <a href="#">
+                            <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BZWYxODViMGYtMGE2ZC00ZGQ3LThhMWUtYTVkNGE3OWU4NWRkL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMjYwNDA2MDE@._V1_SX140_CR0,0,140,209_.jpg"
+                            />
+                        </a>
+                        <p class="small">
+                            <a href="#">Link to movie</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <a href="#">See more</a>
+                    </small>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 15px;">
+                <div class="card-block">
+                    <h4 class="card-title">Your Reviews</h4>
+                    <p *ngIf="userReviews.length === 0" class="card-text">Loved or hated a movie or TV show? Write a review and share it with others!</p>
+                    <h5 *ngFor="let review of userReviews"><a href="#">{{review.title}}</a></h5>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <a href="#">Write a review</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <h1>Sidebar</h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 <form (submit)="submitReview()">
-    <!-- <ngb-rating [(ngModel)]="reviewForm.rating"></ngb-rating>
-    <pre>Rate: <b>{{currentRate}}</b></pre> -->
     <label for="rating">Rating</label>
     <input type="number" class="form-control" name="reviewForm.rating" [(ngModel)]="reviewForm.rating" placeholder="Rate this movie">
     <label for="title">Title</label>

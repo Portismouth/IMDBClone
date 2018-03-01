@@ -6,7 +6,7 @@
 .table-container {
     width:60%;
     max-height:261px;
-    overflow-y:scroll;
+    overflow-y:hidden;
     
 }
 

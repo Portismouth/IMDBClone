@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { LocalService } from '../local.service';
+import { MovieService } from '../movie.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { User } from '../user';
 
 @Component({
@@ -12,14 +14,16 @@ export class UserComponent implements OnInit {
 
   constructor(
     private _auth: AuthService,
-    private _local: LocalService
+    private _local: LocalService,
+    private _movie: MovieService,
+    private _router: Router
   ) { }
 
   user = new User();
   reviewForm: { title: "Fight Club Rules", text: "Great Movie, Great Movie, Great Movie, Great Movie", rating: 10, movieId: 550 }
+  userReviews = [];
 
   ngOnInit() {
-
     this.reviewForm = { title: "Fight Club Rules", text: "Great Movie, Great Movie, Great Movie, Great Movie", rating: 10, movieId: 550 }
     let session = this._auth.checkSession();
     session.subscribe(res => {
@@ -27,23 +31,37 @@ export class UserComponent implements OnInit {
       if (res['status'] == true) {
         let user = this._local.getUser(res['userId']);
         user.subscribe(user => {
+          console.log(user);
           this.user.id = user["_id"];
           this.user.name = user["name"];
           this.user.desc = user["desc"];
+          this.user.memberSince = user['createdAt'];
           for (let review in user["reviews"]) {
-            this.user.reviews.push(user["reviews"][review]);
+            // this.user.reviews.push(user["reviews"][review]);
+            this.getReviewsFromService(user["reviews"][review]);
           }
-          console.log(this.user);
+          for (let item in user['watchlist']) {
+            this.user.watchlist.push(user['watchlist'][item]);
+          }
         })
+      } else {
+        this._router.navigate(['/']);
       }
     });
   }
 
-  submitReview(){
-    let submit = this._local.submitReviewToDb('5a96200fb7bd8d2e34eeab3c', this.reviewForm);
+  getReviewsFromService(reviewId) {
+    let revReq = this._local.getReview(reviewId);
+    revReq.subscribe(res => {
+      this.userReviews.push(res);
+    });
+  }
+
+  submitReview() {
+    let submit = this._local.submitReviewToDb('5a987794e2dc2d04a4ee1261', this.reviewForm);
     submit.subscribe(res => {
       console.log(res);
-    })
+    });
   }
 
 }

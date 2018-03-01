@@ -1,6 +1,7 @@
 body {
     background-color:#000;
 }
+
 #content {
     background-color:#fff;
     height:auto;
@@ -19,6 +20,7 @@ body {
     padding: 0;
     z-index: 99 !important;
 }
+
 #autocomplete li {
     position: relative;
     padding: 5px 15px;
@@ -36,4 +38,3 @@ body {
     color: white;
     cursor: pointer;
 }
-

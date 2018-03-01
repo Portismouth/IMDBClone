@@ -1,4 +1,6 @@
-<h3>Results for <strong>"query"</strong></h3>
+<h3>Results for
+  <strong>"query"</strong>
+</h3>
 <p>
   <sub>Jump to:
     <a href="#">Titles</a> |
@@ -16,10 +18,10 @@
               <img src="https://image.tmdb.org/t/p/w45{{results.poster_path}}" alt="{{results.title}}" />
             </td>
             <td *ngIf="results.poster_path == null">
-                <img src="assets/media_blank.png" alt="{{results.title}}" width="40" height="60" />
-              </td>
+              <img src="assets/media_blank.png" alt="{{results.title}}" width="40" height="60" />
+            </td>
             <td>
-              <a href="#">{{results.title || results.original_name}}</a> ({{results.release_date?.split("-")[0] || results.first_air_date?.split("-")[0]}})
+              <a [routerLink]="['/title/', results.id]">{{results.title || results.original_name}}</a> ({{results.release_date?.split("-")[0] || results.first_air_date?.split("-")[0]}})
             </td>
           </tr>
         </ng-container>
@@ -34,31 +36,33 @@
 </div>
 <h3 class="result">Names</h3>
 <div class="table-container">
-    <table class="table table-striped">
-      <tbody>
-        <ng-container *ngFor="let results of resultsList">
-          <ng-container *ngIf="results.media_type == 'person'">
-            <tr>
-              <td *ngIf="results.profile_path != null">
-                <img src="https://image.tmdb.org/t/p/w45{{results.profile_path}}" alt="{{results.title}}" />
-              </td>
-              <td *ngIf="results.profile_path == null">
-                  <img src="assets/person_blank.png" alt="{{results.name}}" width="40" height="60"/>
-                </td>
+  <table class="table table-striped">
+    <tbody>
+      <ng-container *ngFor="let results of resultsList">
+        <ng-container *ngIf="results.media_type == 'person'">
+          <tr>
+            <td *ngIf="results.profile_path != null">
+              <img src="https://image.tmdb.org/t/p/w45{{results.profile_path}}" alt="{{results.title}}" />
+            </td>
+            <td *ngIf="results.profile_path == null">
+              <img src="assets/person_blank.png" alt="{{results.name}}" width="40" height="60" />
+            </td>
+            <td>
               <td>
-              <td>
-                <a href="#">{{results.name}}</a> <ng-container *ngIf="results.known_for.length != 0">(<span class="small-txt">Last seen in: <a>{{results.known_for[0].title || results.known_for[0].name}}</a>({{results.known_for[0].release_date?.split("-")[0] || results.known_for[0].first_air_date?.split("-")[0]}})</span>)</ng-container>
+                <a href="#">{{results.name}}</a>
+                <ng-container *ngIf="results.known_for.length != 0">(
+                  <span class="small-txt">Last seen in:
+                    <a>{{results.known_for[0].title || results.known_for[0].name}}</a>({{results.known_for[0].release_date?.split("-")[0]
+                    || results.known_for[0].first_air_date?.split("-")[0]}})</span>)</ng-container>
               </td>
-            </tr>
-          </ng-container>
+          </tr>
         </ng-container>
-      </tbody>
-    </table>
-  </div>
-  <div class="view-more">View:
-    <a href="#">
-      <strong>More name matches</strong>
-    </a>
-  </div>
-
-<router-outlet></router-outlet>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+<div class="view-more">View:
+  <a href="#">
+    <strong>More name matches</strong>
+  </a>
+</div>

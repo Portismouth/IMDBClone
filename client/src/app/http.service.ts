@@ -16,6 +16,7 @@ export class HttpService {
       for (let result in res["results"]) {
         this.results.push(res["results"][result]);
       }
+      console.log(this.results)
     });
     return this.results;
   }
@@ -61,5 +62,9 @@ export class HttpService {
     var endDate = end.getDate() < 10 ? '0' + end.getDate() : end.getDate();
 
     return this._http.get(`https://api.themoviedb.org/3/discover/movie?api_key=96cb0a91c72f14a27b23bdca3fff49ea&language=en-US&region=US&include_adult=false&include_video=false&page=1&primary_release_date.gte=${startYear}-${startMonth}-${startDate}&primary_release_date.lte=${endYear}-${endMonth}-${endDate}&vote_count.gte=50`);
+  }
+
+  getMovieById(){
+    return this._http.get('https://api.themoviedb.org/3/movie/550?api_key=96cb0a91c72f14a27b23bdca3fff49ea&language=en-US');
   }
 }
