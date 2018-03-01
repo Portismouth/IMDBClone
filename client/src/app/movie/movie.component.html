@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-8">
+    <div class="col-12">
+      <iframe width="670" height="377" src="https://www.youtube.com/embed/SUXWAEX2jlg" frameborder="0" allow="autoplay;   encrypted-media"
+        allowfullscreen></iframe>
+      <br>
+    </div>
+    <div class="row">
+      <nav class="nav">
+        <a class="nav-link active" href="#">FULL CAST AND CREW</a>
+        <a class="nav-link" href="#">TRIVIA</a>
+        <a class="nav-link" href="#">USER REVIEWS</a>
+        <a class="nav-link" href="#">MORE</a>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-1 justify-content-center">
+        <a href="#" style="text-decoration: none;"><i class="material-icons" style="font-size: 3.5em; color: grey;" title="Add to watchlist">bookmark</i></a>
+      </div>
+      <div class="col-7">
+        <div class="row">
+          <h2 style="margin: 0">{{movie.title}}
+            <span>
+              <h4 style="display: inline-block">(<a href="#">{{movie.year}})</a></h4>
+            </span>
+          </h2>
+        </div>
+        <div class="row">
+          <p class="small" style="margin: 0;">{{certification.certification}} | {{movie.runtime}} min |
+            <span *ngFor="let genre of movie.genres">
+              <a href="#">{{genre['name']}}</a></span> |
+            <a href="#">{{movie.release_date}}</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-4">
+        <i class="material-icons" style="font-size: 40px">star</i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <img src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" />
+      </div>
+      <div class="col-8">
+        <p>{{movie.overview}}</p>
+        <p class="credit-info"><strong>Director:</strong> <a href="#">{{director}}</a></p>
+        <p class="credit-info"><strong>Writers:</strong> <span *ngFor="let writer of writers"><a href="#">{{writer['name']}} ({{writer['job']}})</a>, </span></p>
+        <p class="credit-info"><strong>Stars:</strong> <span *ngFor="let star of stars"><a href="#">{{star['name']}}</a>, </span>  |  <a href="#">See full cast and crew</a></p>
+      </div>
+    </div>
+    <hr>
+    <h3>People who liked this also liked...</h3>
+    <hr>
+    <h3>Cast</h3>
+  </div>
+</div>
