@@ -102,6 +102,7 @@ export class NavigationComponent implements OnInit {
   }
 
   searchSubmit() {
+    $("#autocomplete").html("");
     this.searchResultsFromService(this.searchForm.query, this.searchForm.type);
   }
 
