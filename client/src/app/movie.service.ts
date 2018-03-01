@@ -15,10 +15,14 @@ export class MovieService {
   }
 
   getMovieCredits(movieId) {
-    return this._movie.get('https://api.themoviedb.org/3/movie/'+ movieId + '/credits?api_key=' + this.apiKey);
+    return this._movie.get('https://api.themoviedb.org/3/movie/' + movieId + '/credits?api_key=' + this.apiKey);
   }
 
   getCertification(movieId) {
-    return this._movie.get('https://api.themoviedb.org/3/movie/'+ movieId + '/release_dates?api_key=' + this.apiKey);
+    return this._movie.get('https://api.themoviedb.org/3/movie/' + movieId + '/release_dates?api_key=' + this.apiKey);
+  }
+
+  getRecommendations(movieId) {
+    return this._movie.get('https://api.themoviedb.org/3/movie/' + movieId + '/recommendations?api_key=' + this.apiKey + '&language=en-US&page=1')
   }
 }

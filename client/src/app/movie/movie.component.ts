@@ -20,7 +20,8 @@ export class MovieComponent implements OnInit {
   ) { }
 
   movie = new Movie();
-  cast = [];
+  stars = [];
+  fullCast = [];
   director;
   writers = [];
   certification = {};
@@ -33,6 +34,8 @@ export class MovieComponent implements OnInit {
     this.getDirectorFromService();
     this.getWritersFromService();
     this.getCertificationFromService();
+    this.getFullCastFromService();
+    this.getRecommendationsFromService();
   }
 
   getMovieFromService() {
@@ -53,7 +56,7 @@ export class MovieComponent implements OnInit {
     let starReq = this._movieService.getMovieCredits(this.movieId);
     starReq.subscribe(res => {
       for (let i = 0; i < 3; i++) {
-        this.cast.push(res['cast'][i]);
+        this.stars.push(res['cast'][i]);
       }
     });
   }
@@ -86,5 +89,20 @@ export class MovieComponent implements OnInit {
       let result = res['results'].find(c => c.iso_3166_1 === "US");
       this.certification = result['release_dates'].find(cert => cert.iso_639_1 === "");
     })
+  }
+
+  getFullCastFromService() {
+    let castReq = this._movieService.getMovieCredits(this.movieId);
+    castReq.subscribe(res => {
+      this.fullCast = res['cast'];
+      console.log(this.fullCast)
+    });
+  }
+
+  getRecommendationsFromService() {
+    let recReq = this._movieService.getRecommendations(this.movieId);
+    recReq.subscribe(res => {
+      console.log(res['results'])
+    });
   }
 }
