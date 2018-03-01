@@ -4,6 +4,7 @@ export class Movie {
         title: string = "",
         year: string = "",
         poster_path: string = "",
+        backdrop_path: string = "",
         runtime: number = null,
         overview: string = "",
         rating: string = "",
