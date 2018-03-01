@@ -9,7 +9,7 @@ import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
-  { path: 'movie', component: MovieComponent },
+  { path: 'title/:movieId', component: MovieComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'user', component: UserComponent }
 ]

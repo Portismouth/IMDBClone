@@ -21,14 +21,14 @@
         <div class="row">
           <h2 style="margin: 0">{{movie.title}}
             <span>
-              <h4 style="display: inline-block">(year)</h4>
+              <h4 style="display: inline-block">(<a href="#">{{movie.year}})</a></h4>
             </span>
           </h2>
         </div>
         <div class="row">
-          <p class="small" style="margin: 0;">R | {{movie.runtime}} min |
-            <a href="#">category</a>,
-            <a href="#">category</a> |
+          <p class="small" style="margin: 0;">{{certification.certification}} | {{movie.runtime}} min |
+            <span *ngFor="let genre of movie.genres">
+              <a href="#">{{genre['name']}}</a></span> |
             <a href="#">{{movie.release_date}}</a>
           </p>
         </div>
@@ -38,8 +38,16 @@
       </div>
     </div>
     <div class="row">
-      <img src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" />
-      {{stars}}
+      <div class="col-3">
+        <img src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" />
+      </div>
+      <div class="col-8">
+        <p>{{movie.overview}}</p>
+        <p class="credit-info"><strong>Director:</strong> <a href="#">{{director}}</a></p>
+        <p class="credit-info"><strong>Writers:</strong> <span *ngFor="let writer of writers"><a href="#">{{writer['name']}} ({{writer['job']}})</a>, </span></p>
+        <p class="credit-info"><strong>Stars:</strong> <span *ngFor="let star of cast"><a href="#">{{star['name']}}</a>, </span>  |  <a href="#">See full cast and crew</a></p>
+      </div>
+
     </div>
   </div>
 </div>
