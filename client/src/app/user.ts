@@ -4,6 +4,7 @@ export class User {
         public name: string = "",
         public desc: string = "",
         public reviews = [],
-        public watchlist = []
+        public watchlist = [],
+        public memberSince = ""
     ) {}
 }
