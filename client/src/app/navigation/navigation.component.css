@@ -1,3 +1,6 @@
+#logo {
+    width:100%;
+}
 nav {
     background:linear-gradient(to bottom, #646464 0%,#0e0e0e 100%);
     color:#fff; 
@@ -9,6 +12,7 @@ nav a {
     align-items: center;
 }
 .nav-aside {
+    width:100%;
     font-size: .75em;
     text-align: right;
 }
@@ -25,13 +29,14 @@ nav a {
     width:100%;
 }
 #searchForm input {
-    width:70%;
+    width:68%;
 }
 #searchFilter {
-    width:20%;
+    width:16%;
 }
 #dropNav {
     width:100%;
+    font-size: .9em;
 }
 #dropNav li::before, #dropNav li.last::after {
     content: "";
@@ -43,6 +48,7 @@ nav a {
 }
 #dropNav li {
    align-self: center;
+   width:25%;
 }
 #dropNav li .btn {
     background-color: transparent;
@@ -50,6 +56,8 @@ nav a {
     text-align: left;
     font-size: .9em;
     line-height:1.2em;
+    width: 75%;
+    padding:6px;
 }
 #fbSignInBtn {
     font-size: .9em;
@@ -79,4 +87,7 @@ nav a {
     background-color: #337ab7;
     color: white;
     cursor: pointer;
+}
+.dropdown-toggle::after {
+    margin-left: 1em;
 }

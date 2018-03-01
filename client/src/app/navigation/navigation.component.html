@@ -1,12 +1,12 @@
 <nav class="navbar navbar-light row" id="headerRow">
-  <div class="col-1">
-    <h3>IMDB</h3>
+  <div class="col">
+    <img id="logo" src="assets/logo.png" alt="FMDb"/>
   </div>
-  <div class="col-11">
+  <div class="col-10">
     <ul id="autocomplete"></ul>
     <div class="row" id="navTopRow">
-      <div class="col-9">
-        <form (submit)="searchSubmit()" class="form-inline" id="searchForm">
+      <div class="col-lg-9 col-md-8 col-sm-8">
+        <form (submit)="searchSubmit()" class="form-inline d-flex flex-row" id="searchForm">
           <input class="form-control mr-sm-2" id="search" type="text" name="searchForm.query" [(ngModel)]="searchForm.query" placeholder="Find Movies, TV shows, Celebrities and more...">
           <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="searchFilter" name="searchForm.type" [(ngModel)]="searchForm.type">
             <option selected>All</option>
@@ -32,8 +32,8 @@
       </div>
     </div>
     <div class="row" id="navBottomRow">
-      <div class="col-9">
-        <ul id="dropNav" class="nav">
+      <div class="col-lg-9 col-md-8 col-sm-8">
+        <ul id="dropNav" class="nav d-flex flex-row">
           <li ngbDropdown class="nav-item d-inline-block">
             <button class="btn btn-dark" id="dropdownBasic1" ngbDropdownToggle>Movies, TV
               <br>&amp; Showtimes</button>
