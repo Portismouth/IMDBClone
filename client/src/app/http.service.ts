@@ -34,4 +34,8 @@ export class HttpService {
     //find better source pulls netflix releases...
     return this._http.get('https://api.themoviedb.org/3/discover/movie?api_key=96cb0a91c72f14a27b23bdca3fff49ea&language=en-US&region=US&include_adult=false&include_video=false&page=1&primary_release_date.gte=2018-01-24&primary_release_date.lte=2018-02-26&vote_count.gte=50')
   }
+
+  getMovieById(){
+    return this._http.get('https://api.themoviedb.org/3/movie/550?api_key=96cb0a91c72f14a27b23bdca3fff49ea&language=en-US');
+  }
 }
