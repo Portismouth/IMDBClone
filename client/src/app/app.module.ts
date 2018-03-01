@@ -23,7 +23,7 @@ import { AuthService } from './auth.service';
     AppComponent,
     RegistrationComponent,
     ResultsComponent,
-    NavigationComponent
+    NavigationComponent,
     UserComponent
   ],
   imports: [
