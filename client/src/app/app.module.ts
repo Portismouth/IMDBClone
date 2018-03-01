@@ -14,6 +14,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ResultsComponent } from './results/results.component';
 import { UserComponent } from './user/user.component';
 import { ReleasesComponent } from './releases/releases.component';
+import { HomeComponent } from './home/home.component';
 
 //Services
 import { HttpService } from './http.service';
@@ -29,7 +30,8 @@ import { MovieService } from './movie.service';
     NavigationComponent,
     UserComponent,
     ReleasesComponent,
-    MovieComponent
+    MovieComponent,
+    HomeComponent
   ],
   imports: [
     NgbModule.forRoot(),
