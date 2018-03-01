@@ -1,7 +1,40 @@
 body {
     background-color:#000;
 }
+
 #content {
-    background-color: #fff;
-    height: auto;
+    background-color:#fff;
+    height:auto;
+    padding-bottom:50px;
+}
+
+.small-txt {
+    font-size: .75em;
+}
+
+#autocomplete {
+    top: 38px;
+    position: absolute;
+    list-style: none;
+    background-color: black;
+    padding: 0;
+    z-index: 99 !important;
+}
+
+#autocomplete li {
+    position: relative;
+    padding: 5px 15px;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    z-index: 99 !important;
+}
+#autocomplete li:hover {
+    background-color: #337ab7;
+    cursor: pointer;
+}
+#autocomplete .active {
+    background-color: #337ab7;
+    color: white;
+    cursor: pointer;
 }

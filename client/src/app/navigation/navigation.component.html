@@ -3,10 +3,11 @@
     <h3>IMDB</h3>
   </div>
   <div class="col-11">
+    <ul id="autocomplete"></ul>
     <div class="row" id="navTopRow">
       <div class="col-9">
         <form (submit)="searchSubmit()" class="form-inline" id="searchForm">
-          <input class="form-control mr-sm-2" type="text" name="searchForm.query" [(ngModel)]="searchForm.query" placeholder="Find Movies, TV shows, Celebrities and more...">
+          <input class="form-control mr-sm-2" id="search" type="text" name="searchForm.query" [(ngModel)]="searchForm.query" placeholder="Find Movies, TV shows, Celebrities and more...">
           <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="searchFilter" name="searchForm.type" [(ngModel)]="searchForm.type">
             <option selected>All</option>
             <option value="title">Titles</option>

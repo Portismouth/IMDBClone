@@ -13,6 +13,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ResultsComponent } from './results/results.component';
 import { UserComponent } from './user/user.component';
+import { ReleasesComponent } from './releases/releases.component';
 
 //Services
 import { HttpService } from './http.service';
@@ -27,6 +28,7 @@ import { MovieService } from './movie.service';
     ResultsComponent,
     NavigationComponent,
     UserComponent,
+    ReleasesComponent
     MovieComponent
   ],
   imports: [
