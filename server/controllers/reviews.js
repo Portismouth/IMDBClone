@@ -3,13 +3,22 @@ var User = mongoose.model("User");
 var Review = mongoose.model("Review");
 
 module.exports = {
-    getReviews: function (req, res){
-        console.log("here")
+    getUserReviews: function (req, res) {
         Review.findById(req.params.id, function (err, review) {
-            if(err) {
+            if (err) {
                 res.send(err);
             } else {
                 res.send(review);
+            }
+        });
+    },
+    getMovieReviews: function (req, res) {
+        console.log(req.params.movieId);
+        Review.find({movieId: req.params.movieId}, function (err, reviews) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(reviews);
             }
         });
     }

@@ -108,10 +108,10 @@ module.exports = {
         });
         console.log(newReview);
         if (newReview.errors) {
-            console.log("line 90")
+            console.log("line 90");
             res.send(newReview.errors);
         } else {
-            console.log("line 93")
+            console.log("line 93");
             newReview._user = req.params.id;
             newReview.save(function (err) {
                 if (err) {
@@ -124,7 +124,7 @@ module.exports = {
                             if (err) {
                                 res.send(err);
                             } else {
-                                res.send(user);
+                                res.send({ message: "success", user: user });
                             }
                         }
                     );

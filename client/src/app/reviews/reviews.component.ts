@@ -24,6 +24,8 @@ export class ReviewsComponent implements OnInit {
   movieTitle;
   reviewForm = { reviewTitle: "", text: "", rating: null, movieId: "", movieTitle: "" }
   authError: Boolean;
+  submitError: Boolean;
+  revErrors= [];
 
   ngOnInit() {
     this.movieId = this._route.params["_value"].movieId;
@@ -37,9 +39,16 @@ export class ReviewsComponent implements OnInit {
       if (res['status'] == true) {
         let add = this._localService.submitReviewToDb(res['userId'], this.reviewForm);
         add.subscribe(res => {
-          console.log(res);
+          if (res["message"] != "success") {
+            console.log(res)
+            for (let error in res) {
+              this.revErrors.push(res[error].message);
+              this.submitError = true;
+            };
+          } else {
+            this._router.navigate(['/title/', this.movieId])
+          }
         })
-        this._router.navigate(['/title/', this.movieId])
       } else {
         this.authError = true;
       }
