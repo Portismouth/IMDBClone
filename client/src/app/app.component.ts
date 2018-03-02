@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
-import { ResultsComponent } from './results/results.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +10,13 @@ import { NavigationComponent } from './navigation/navigation.component';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private _httpService: HttpService) { }
+  constructor(private _httpService: HttpService,private _router: Router) { }
   movieList = [];
 
   ngOnInit() {
     this.currentWeekReleaseFromService();
     this.alreadyOutFromService();
+    this._router.navigate(['/home']);
   }
 
   currentWeekReleaseFromService(){

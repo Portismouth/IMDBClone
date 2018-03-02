@@ -1,14 +1,6 @@
-<h3>Results for
-  <strong>"query"</strong>
-</h3>
-<p>
-  <sub>Jump to:
-    <a href="#">Titles</a> |
-    <a href="#">Names</a>
-  </sub>
-</p>
+<h2>Results</h2>
 <h3 class="result">Titles</h3>
-<div class="table-container">
+<div id="titles" class="table-container" ng-controller="ScrollController">
   <table class="table table-striped">
     <tbody>
       <ng-container *ngFor="let results of resultsList">
@@ -29,13 +21,10 @@
     </tbody>
   </table>
 </div>
-<div class="view-more">View:
-  <a href="#">
-    <strong>More title matches</strong>
-  </a>
+<div class="view-more">
 </div>
 <h3 class="result">Names</h3>
-<div class="table-container">
+<div id="names" class="table-container" ng-controller="ScrollController">
   <table class="table table-striped">
     <tbody>
       <ng-container *ngFor="let results of resultsList">
@@ -61,8 +50,6 @@
     </tbody>
   </table>
 </div>
-<div class="view-more">View:
-  <a href="#">
-    <strong>More name matches</strong>
-  </a>
+<div class="view-more">
+
 </div>

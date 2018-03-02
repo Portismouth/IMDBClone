@@ -13,7 +13,7 @@
             <option value="title">Titles</option>
             <option value="name">Names</option>
           </select>
-          <button class="btn btn-warning my-2 my-sm-0" type="submit">
+          <button [routerLink]="['/results/']" class="btn btn-warning my-2 my-sm-0" type="submit">
             <i class="fas fa-search"></i>
           </button>
         </form>
@@ -73,11 +73,13 @@
         </ul>
       </div>
       <div class="col nav-aside">
-        <button id="fbSignInBtn" type="button" class="btn btn-primary btn-sm">
-          <i class="fab fa-facebook-f"></i> Sign in with Facebook</button>
-        <br>
-        <a href="#">Sign in without Facebook</a>
-      </div>
+        <!--button id="fbSignInBtn" type="button" class="btn btn-primary btn-sm">
+          <i class="fab fa-facebook-f"></i> Sign in with Facebook</button-->
+        
+        <button  [routerLink]="['/registration']" type="button" class="btn btn-warning btn-md">
+        Login or Register
+      </button>
+        </div>
     </div>
   </div>
 </nav>
