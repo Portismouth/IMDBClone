@@ -13,8 +13,9 @@
 <form (submit)="submitReview()">
   <label for="movieTitle">Movie Title</label>
   <input type="text" class="form-control" name="reviewForm.movieTitle" [(ngModel)]="reviewForm.movieTitle" value="reviewForm.movieTitle">
-  <label for="rating">Rating</label>
-  <input type="number" class="form-control" name="reviewForm.rating" [(ngModel)]="reviewForm.rating" placeholder="Rate this movie">
+  <label for="rating">Rating</label><br>
+  <ngb-rating name="reviewForm.rating" [(ngModel)]="reviewForm.rating"></ngb-rating><br>
+  <!--input type="number" class="form-control" name="reviewForm.rating" [(ngModel)]="reviewForm.rating" placeholder="Rate this movie"-->
   <label for="reviewTitle">Review Title</label>
   <input type="text" class="form-control" name="reviewForm.reviewTitle" [(ngModel)]="reviewForm.reviewTitle" placeholder="Your review title">
   <label for="text">Review</label>
