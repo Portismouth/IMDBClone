@@ -15,6 +15,8 @@ import { ReleasesComponent } from './releases/releases.component';
 import { ResultsComponent } from './results/results.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { UserComponent } from './user/user.component';
+import { ReleasesComponent } from './releases/releases.component';
+import { HomeComponent } from './home/home.component';
 
 //Services
 import { HttpService } from './http.service';
@@ -33,6 +35,7 @@ import { ReviewService } from './review.service';
     ReleasesComponent,
     MovieComponent,
     ReviewsComponent
+    HomeComponent
   ],
   imports: [
     NgbModule.forRoot(),
