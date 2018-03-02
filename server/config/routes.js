@@ -12,6 +12,8 @@ module.exports = function (app) {
         .post(users.login)
     app.route('/session')
         .get(users.checkSession)
+    app.route('/logout')
+        .get(users.logout)
 
     //user routes
     app.route('/user/:id')

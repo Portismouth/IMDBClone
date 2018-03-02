@@ -17,7 +17,7 @@ export class AuthService {
   checkSession() {
     return this._http.get('/session');
   }
-  
+
   logout() {
     return this._http.get('/logout');
   }
