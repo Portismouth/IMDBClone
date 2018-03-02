@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'title/:movieId', component: MovieComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'user', component: UserComponent },
-  { path: 'releases', component: ReleasesComponent }
+  { path: 'releases', component: ReleasesComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'results' },
 ]
 
 @NgModule({

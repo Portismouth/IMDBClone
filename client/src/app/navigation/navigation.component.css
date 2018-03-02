@@ -16,7 +16,14 @@ nav a {
     font-size: .75em;
     text-align: right;
 }
+.nav-aside > * {
+    display: inline-block;
+}
+#navBottomRow .nav-aside p {
+    margin: 0.5rem 0 0 0;
+}
 .circle {
+    width: 2.5rem;
     border-radius: 100%;
 }
 #navBottomRow {
@@ -59,8 +66,9 @@ nav a {
     width: 75%;
     padding:6px;
 }
-#fbSignInBtn {
-    font-size: .9em;
+#signInBtn {
+    /* font-size: .9em; */
+    margin: -0.25rem 0 0 0.5rem;
     font-weight: bold;
 }
 #autocomplete li {

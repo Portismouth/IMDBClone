@@ -1,6 +1,8 @@
 <nav class="navbar navbar-light row" id="headerRow">
   <div class="col">
-    <img id="logo" src="assets/logo.png" alt="FMDb"/>
+    <a routerLink="results">
+      <img id="logo" src="assets/logo.png" alt="FMDb"/>
+    </a>
   </div>
   <div class="col-10">
     <ul id="autocomplete"></ul>
@@ -73,10 +75,17 @@
         </ul>
       </div>
       <div class="col nav-aside">
-        <button id="fbSignInBtn" type="button" class="btn btn-primary btn-sm">
-          <i class="fab fa-facebook-f"></i> Sign in with Facebook</button>
-        <br>
-        <a href="#">Sign in without Facebook</a>
+        <ng-container *ngIf="!loggedIn">
+          <button id="signInBtn" type="button" routerLink="/registration" class="btn btn-primary btn-sm">
+            <i class="fas fa-sign-in-alt"></i> Sign in / Register
+          </button>
+        </ng-container>
+        <ng-container *ngIf="loggedIn">
+          <p>Hello, {{user.name}}!</p>
+          <button id="signInBtn" type="button" routerLink="/registration" class="btn btn-primary btn-sm">
+            <i class="fas fa-sign-out-alt"></i> Log out
+          </button>
+        </ng-container>
       </div>
     </div>
   </div>
