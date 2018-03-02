@@ -82,7 +82,7 @@
         </ng-container>
         <ng-container *ngIf="loggedIn">
           <p>Hello, {{user.name}}!</p>
-          <button id="signInBtn" type="button" [routerLink]="['/registration']" class="btn btn-primary btn-sm">
+          <button id="signInBtn" type="button" (click)="logout()" class="btn btn-primary btn-sm">
             <i class="fas fa-sign-out-alt"></i> Log out
           </button>
         </ng-container>

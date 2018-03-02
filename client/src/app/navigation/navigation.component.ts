@@ -135,4 +135,11 @@ export class NavigationComponent implements OnInit {
     this._router.navigate(['/results']);
   }
 
+  logout() {
+    this._authService.logout().subscribe(data => {
+      this.loggedIn = false;
+      this._router.navigate(['home']);
+    });
+  }
+
 }
