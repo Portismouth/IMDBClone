@@ -21,7 +21,7 @@
         </form>
       </div>
       <div class="col nav-aside">
-        <a href="#">Help</a>
+        <p style="cursor: pointer;" onclick="alert('Help yourself!')"><u>Help</u></p>&nbsp;
         <button type="button" class="circle btn btn-outline-light">
           <i class="fab fa-facebook-f"></i>
         </button>
@@ -71,13 +71,13 @@
       </div>
       <div class="col nav-aside">
         <ng-container *ngIf="!loggedIn">
-          <button id="signInBtn" type="button" [routerLink]="['/registration']" class="btn btn-primary btn-sm">
+          <button id="signInBtn" type="button" [routerLink]="['/registration']" class="btn btn-warning btn-sm">
             <i class="fas fa-sign-in-alt"></i> Sign in / Register
           </button>
         </ng-container>
         <ng-container *ngIf="loggedIn">
-          <p>Hello, {{user.name}}!</p>
-          <button id="signInBtn" type="button" (click)="logout()" class="btn btn-primary btn-sm">
+          <p>Hello,&nbsp;</p><a href="/user">{{user.name}}!</a><br><br>
+          <button id="signInBtn" type="button" (click)="logout()" class="btn btn-warning btn-sm">
             <i class="fas fa-sign-out-alt"></i> Log out
           </button>
         </ng-container>
