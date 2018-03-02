@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../http.service';
+import { ActivatedRoute, Params, Router, Route } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -12,7 +13,7 @@ export class NavigationComponent implements OnInit {
 
   @Output() aTaskEventEmitter = new EventEmitter();
 
-  constructor(private _httpService: HttpService) { }
+  constructor(private _httpService: HttpService,private _router: Router) { }
 
   ngOnInit() {
     this.searchForm = { query: "", type: "All" };
@@ -104,6 +105,7 @@ export class NavigationComponent implements OnInit {
   searchSubmit() {
     $("#autocomplete").html("");
     this.searchResultsFromService(this.searchForm.query, this.searchForm.type);
+    this._router.navigate(['/results']);
   }
 
 }
