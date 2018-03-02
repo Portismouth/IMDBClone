@@ -15,7 +15,7 @@
             <option value="title">Titles</option>
             <option value="name">Names</option>
           </select>
-          <button class="btn btn-warning my-2 my-sm-0" type="submit">
+          <button [routerLink]="['/results/']" class="btn btn-warning my-2 my-sm-0" type="submit">
             <i class="fas fa-search"></i>
           </button>
         </form>
@@ -76,13 +76,13 @@
       </div>
       <div class="col nav-aside">
         <ng-container *ngIf="!loggedIn">
-          <button id="signInBtn" type="button" routerLink="/registration" class="btn btn-primary btn-sm">
+          <button id="signInBtn" type="button" [routerLink]="['/registration']" class="btn btn-primary btn-sm">
             <i class="fas fa-sign-in-alt"></i> Sign in / Register
           </button>
         </ng-container>
         <ng-container *ngIf="loggedIn">
           <p>Hello, {{user.name}}!</p>
-          <button id="signInBtn" type="button" routerLink="/registration" class="btn btn-primary btn-sm">
+          <button id="signInBtn" type="button" [routerLink]="['/registration']" class="btn btn-primary btn-sm">
             <i class="fas fa-sign-out-alt"></i> Log out
           </button>
         </ng-container>

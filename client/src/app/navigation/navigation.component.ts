@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../http.service';
 import { AuthService } from '../auth.service';
 import { LocalService } from '../local.service';
-import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Params, Router, Route, NavigationEnd } from '@angular/router';
 import { User } from '../user';
 import * as $ from 'jquery';
 
@@ -132,6 +132,7 @@ export class NavigationComponent implements OnInit {
   searchSubmit() {
     $("#autocomplete").html("");
     this.searchResultsFromService(this.searchForm.query, this.searchForm.type);
+    this._router.navigate(['/results']);
   }
 
 }

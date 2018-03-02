@@ -5,8 +5,8 @@
 
 .table-container {
     width:60%;
-    max-height:261px;
-    overflow-y:hidden;
+    max-height:391px;
+    overflow-y:scroll;
     
 }
 
@@ -21,13 +21,4 @@ img {
     background-color:rgba(0,0,0,.05);
     border-radius: 0px 0px 10px 10px;
     margin-bottom: 3rem;
-}
-h3 {
-    font-size:1.25em;
-    font-weight: normal;
-    margin-top:1rem;
-}
-h3.result {
-    color:#A58500;
-    font-weight: bold;
 }

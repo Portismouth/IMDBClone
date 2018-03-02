@@ -3,6 +3,7 @@ var bcrypt = require("bcrypt-as-promised");
 var session = require('express-session');
 var User = mongoose.model("User");
 var Review = mongoose.model("Review");
+var WatchItem = mongoose.model("Watch");
 
 module.exports = {
     register: function (req, res) {
@@ -64,7 +65,21 @@ module.exports = {
         }
     },
     addToWatchlist: function (req, res) {
-
+        let newWatchItem = new WatchItem({
+            movieId: req.body.movieId,
+            _user: req.params.id
+        })
+        console.log(newWatchItem);
+        User.findByIdAndUpdate(req.params.id,
+            { $push: { watchlist: newWatchItem } },
+            function (err, user) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.send(user);
+                }
+            }
+        );
     },
     getUser: function (req, res) {
         User.findById(req.params.id)
@@ -92,18 +107,23 @@ module.exports = {
         } else {
             console.log("line 93")
             newReview._user = req.params.id;
-            User.findByIdAndUpdate(req.params.id,
-                { $push: { reviews: newReview } },
-                { safe: true, upsert: true, new: true },
-                function (err, user) {
-                    console.log("line 99")
-                    if (err) {
-                        res.send(err);
-                    } else {
-                        res.send(user);
-                    }
+            newReview.save(function (err) {
+                if (err) {
+                    res.send(err)
+                } else {
+                    User.findByIdAndUpdate(req.params.id,
+                        { $push: { reviews: newReview } },
+                        { safe: true, upsert: true, new: true },
+                        function (err, user) {
+                            if (err) {
+                                res.send(err);
+                            } else {
+                                res.send(user);
+                            }
+                        }
+                    );
                 }
-            );
+            })
         }
     }
 }

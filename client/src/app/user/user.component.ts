@@ -20,11 +20,9 @@ export class UserComponent implements OnInit {
   ) { }
 
   user = new User();
-  reviewForm: { title: "Fight Club Rules", text: "Great Movie, Great Movie, Great Movie, Great Movie", rating: 10, movieId: 550 }
   userReviews = [];
 
   ngOnInit() {
-    this.reviewForm = { title: "Fight Club Rules", text: "Great Movie, Great Movie, Great Movie, Great Movie", rating: 10, movieId: 550 }
     let session = this._auth.checkSession();
     session.subscribe(res => {
       console.log(res);
@@ -56,12 +54,4 @@ export class UserComponent implements OnInit {
       this.userReviews.push(res);
     });
   }
-
-  submitReview() {
-    let submit = this._local.submitReviewToDb('5a987794e2dc2d04a4ee1261', this.reviewForm);
-    submit.subscribe(res => {
-      console.log(res);
-    });
-  }
-
 }

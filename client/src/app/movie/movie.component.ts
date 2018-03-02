@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { MovieService } from '../movie.service';
+import { ReviewService } from '../review.service';
 import { LocalService } from '../local.service';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+import { SlicePipe } from '@angular/common';
 import { Movie } from '../movie-class';
 
 @Component({
@@ -17,8 +19,10 @@ export class MovieComponent implements OnInit {
   constructor(
     private _movieService: MovieService,
     private _localService: LocalService,
+    private _reviewService: ReviewService,
     private _authService: AuthService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _router: Router,
   ) { }
 
   movie = new Movie();
@@ -29,8 +33,15 @@ export class MovieComponent implements OnInit {
   certification = {};
   authError: Boolean;
   movieId;
+  recommendations = [];
+  reviews = [];
+
+
 
   ngOnInit() {
+    this._router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    }
     this.movieId = this._route.params["_value"].movieId;
     this.getMovieFromService();
     this.getStarsFromService();
@@ -39,6 +50,7 @@ export class MovieComponent implements OnInit {
     this.getCertificationFromService();
     this.getFullCastFromService();
     this.getRecommendationsFromService();
+    this.getReviewsFromService();
   }
 
   getMovieFromService() {
@@ -100,22 +112,24 @@ export class MovieComponent implements OnInit {
     let castReq = this._movieService.getMovieCredits(this.movieId);
     castReq.subscribe(res => {
       this.fullCast = res['cast'];
-      console.log(this.fullCast)
     });
   }
 
   getRecommendationsFromService() {
     let recReq = this._movieService.getRecommendations(this.movieId);
     recReq.subscribe(res => {
-      console.log(res['results'])
+      console.log(res['results']);
+      for (let i = 0; i < 5; i++) {
+        this.recommendations.push(res['results'][i]);
+      }
     });
   }
 
-  addToWatchList(){
+  addToWatchList() {
     let authorize = this._authService.checkSession();
     authorize.subscribe(res => {
-      if(res['status'] == true){
-        let add = this._localService.addToWatchList( "5a9848e6679aeb326c07cf9e", this.movie);
+      if (res['status'] == true) {
+        let add = this._localService.addToWatchList("5a9848e6679aeb326c07cf9e", this.movie);
         add.subscribe(res => {
           console.log(res);
         })
@@ -123,5 +137,14 @@ export class MovieComponent implements OnInit {
         this.authError = true;
       }
     })
+  }
+
+  getReviewsFromService() {
+    let req = this._reviewService.getReviews(this.movieId);
+    req.subscribe(res => {
+      for (let review in res['results']) {
+        this.reviews.push(res['results'][review]);
+      }
+    });
   }
 }

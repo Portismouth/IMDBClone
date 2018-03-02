@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model("User");
 //require necessary controllers
 var users = require("../controllers/users.js");
+var reviews = require("../controllers/reviews.js");
 
 module.exports = function (app) {
     //auth routes
@@ -18,4 +19,14 @@ module.exports = function (app) {
         .post(users.submitReview)
         .put()
         .delete()
+
+    //review routes
+    app.route('/review/:id')
+        .get(reviews.getReviews)
+        .put()
+        .delete()
+    //watchlist routes
+    app.route('/watchlist/:userId')
+        .post(users.addToWatchlist)
+    
 }
