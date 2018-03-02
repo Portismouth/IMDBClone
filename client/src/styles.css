@@ -1,11 +1,16 @@
 body {
-    background-color:#000;
+    background: url('assets/bg.jpg');
+    background-attachment: fixed;
+    background-size: contain;
 }
 
 #content {
     background-color:#fff;
     height:auto;
     padding-bottom:50px;
+    -webkit-box-shadow: 0px 0px 80px 16px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 80px 16px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 80px 16px rgba(0,0,0,0.75);
 }
 
 .small-txt {
