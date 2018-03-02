@@ -35,6 +35,7 @@ export class MovieComponent implements OnInit {
   movieId;
   recommendations = [];
   reviews = [];
+  user
 
   ngOnInit() {
     this._router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -48,7 +49,8 @@ export class MovieComponent implements OnInit {
     this.getCertificationFromService();
     this.getFullCastFromService();
     this.getRecommendationsFromService();
-    this.getReviewsFromService();
+    this.getReviewsFromMovieService();
+    this.getReviewsFromLocalService();
   }
 
   getMovieFromService() {
@@ -139,12 +141,28 @@ export class MovieComponent implements OnInit {
     })
   }
 
-  getReviewsFromService() {
+  getReviewsFromMovieService() {
     let req = this._reviewService.getReviews(this.movieId);
     req.subscribe(res => {
       for (let review in res['results']) {
         this.reviews.push(res['results'][review]);
       }
+      console.log(this.reviews);
+    });
+  }
+
+  getReviewsFromLocalService() {
+    let req = this._localService.getAllReviews(this.movieId);
+    req.subscribe(res => {
+      for(let review in res){
+        console.log(res[review])
+        let user = this._localService.getUser(res[review]['_user']);
+        user.subscribe(un => {
+          let userRev = { author: un['name'], content: res[review]['text']}
+          this.reviews.push(userRev);
+        });
+      }
+      console.log(this.reviews)
     });
   }
 }

@@ -23,4 +23,8 @@ export class LocalService {
   getReview(reviewId){
     return this._http.get('/review/' + reviewId);
   }
+  
+  getAllReviews(movieId){
+    return this._http.get('/reviews/' + movieId)
+  }
 }

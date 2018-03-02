@@ -24,9 +24,13 @@ module.exports = function (app) {
 
     //review routes
     app.route('/review/:id')
-        .get(reviews.getReviews)
+        .get(reviews.getUserReviews)
         .put()
         .delete()
+
+    app.route('/reviews/:movieId')
+        .get(reviews.getMovieReviews)
+            
     //watchlist routes
     app.route('/watchlist/:userId')
         .post(users.addToWatchlist)
