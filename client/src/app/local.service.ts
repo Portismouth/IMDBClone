@@ -10,21 +10,21 @@ export class LocalService {
     return this._http.get('/user/' + userId)
   }
 
-  submitReviewToDb(userId, review){
+  submitReviewToDb(userId, review) {
     console.log(userId, review);
     return this._http.post('/user/' + userId, review);
   }
 
-  addToWatchList(userId, movieId){
+  addToWatchList(userId, movieId) {
     // console.log(userId, movieId);
     return this._http.post('/watchlist/' + userId, movieId);
   }
 
-  getReview(reviewId){
+  getReview(reviewId) {
     return this._http.get('/review/' + reviewId);
   }
-  
-  getAllReviews(movieId){
+
+  getAllReviews(movieId) {
     return this._http.get('/reviews/' + movieId)
   }
 }

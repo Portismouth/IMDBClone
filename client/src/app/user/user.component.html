@@ -48,8 +48,8 @@
                     <p *ngIf="userReviews.length === 0" class="card-text">Loved or hated a movie or TV show? Write a review and share it with others!</p>
                     <ul class="list-group list-group-flush">
                         <li *ngFor="let review of userReviews" class="list-group-item">
-                            <h4>Review for {{review.movieTitle}}</h4>
-                            <h5>{{review.reviewTitle}}</h5>
+                            <h4>Review for <a [routerLink]="['/title/', review.movieId]">{{review.movieTitle}}</a></h4>
+                            <h5>{{review.reviewTitle}} {{review.rating}}/10</h5>
                             <p>{{review.text}}</p>
                         </li>
                     </ul>

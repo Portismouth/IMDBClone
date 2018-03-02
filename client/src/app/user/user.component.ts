@@ -53,6 +53,7 @@ export class UserComponent implements OnInit {
     let revReq = this._local.getReview(reviewId);
     revReq.subscribe(res => {
       this.userReviews.push(res);
+      console.log(this.userReviews)
     });
   }
 }
