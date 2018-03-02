@@ -22,7 +22,7 @@ export class NavigationComponent implements OnInit {
     private _httpService: HttpService,
     private _authService: AuthService,
     private _localService: LocalService,
-    private _router: Router,
+    public _router: Router,
     private _route: ActivatedRoute
   ) {
     this.searchForm = { query: "", type: "All" };
@@ -66,11 +66,12 @@ export class NavigationComponent implements OnInit {
           $('#autocomplete').html('');
         }
         else {
-          $.get('https://api.themoviedb.org/3/search/multi?api_key=' + apiKey + '&language=en-US&query=' + query + '&page=1&include_adult=false', data => {
+          $.get('https://api.themoviedb.org/3/search/movie?api_key=' + apiKey + '&language=en-US&query=' + query + '&page=1&include_adult=false', data => {
             $('#autocomplete').html('');
+            console.log(data["results"]);
             data['results'].forEach(result => {
-              if (result['name'] !== undefined) {
-                $('#autocomplete').append('<li>' + result['name'] + '</li>');
+              if (result['title'] !== undefined) {
+                $('#autocomplete').append(`<li id="${result['id']}">${result['title']}</li>`);
               }
             });
           });
@@ -78,15 +79,10 @@ export class NavigationComponent implements OnInit {
       });
 
       $("#autocomplete").on("click", "li", function () {
-        var query = $(this).text();
-
         $("#autocomplete").html("");
-        $("#search").val(query);
-      });
-
-      $("#autocomplete").on("click", "li", function () {
-        $(this).parent().children().removeClass("active");
-        $(this).addClass("active");
+        
+        var id = $(this).attr("id");
+        window.location.replace(`/title/${id}`);
       });
 
       $("#search").keydown(function (e) {
