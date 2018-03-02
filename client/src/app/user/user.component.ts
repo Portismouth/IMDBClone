@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { LocalService } from '../local.service';
+import { MovieService } from '../movie.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { User } from '../user';
 
@@ -14,15 +15,14 @@ export class UserComponent implements OnInit {
   constructor(
     private _auth: AuthService,
     private _local: LocalService,
+    private _movie: MovieService,
     private _router: Router
   ) { }
 
   user = new User();
-  reviewForm: { title: "Fight Club Rules", text: "Great Movie, Great Movie, Great Movie, Great Movie", rating: 10, movieId: 550 }
+  userReviews = [];
 
   ngOnInit() {
-
-    this.reviewForm = { title: "Fight Club Rules", text: "Great Movie, Great Movie, Great Movie, Great Movie", rating: 10, movieId: 550 }
     let session = this._auth.checkSession();
     session.subscribe(res => {
       console.log(res);
@@ -35,12 +35,12 @@ export class UserComponent implements OnInit {
           this.user.desc = user["desc"];
           this.user.memberSince = user['createdAt'];
           for (let review in user["reviews"]) {
-            this.user.reviews.push(user["reviews"][review]);
+            // this.user.reviews.push(user["reviews"][review]);
+            this.getReviewsFromService(user["reviews"][review]);
           }
-          for(let item in user['watchlist']){
+          for (let item in user['watchlist']) {
             this.user.watchlist.push(user['watchlist'][item]);
           }
-          console.log(this.user);
         })
       } else {
         this._router.navigate(['/']);
@@ -48,11 +48,10 @@ export class UserComponent implements OnInit {
     });
   }
 
-  submitReview(){
-    let submit = this._local.submitReviewToDb('5a96200fb7bd8d2e34eeab3c', this.reviewForm);
-    submit.subscribe(res => {
-      console.log(res);
-    })
+  getReviewsFromService(reviewId) {
+    let revReq = this._local.getReview(reviewId);
+    revReq.subscribe(res => {
+      this.userReviews.push(res);
+    });
   }
-
 }

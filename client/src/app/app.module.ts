@@ -11,7 +11,9 @@ import { AppComponent } from './app.component';
 import { MovieComponent } from './movie/movie.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ReleasesComponent } from './releases/releases.component';
 import { ResultsComponent } from './results/results.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 import { UserComponent } from './user/user.component';
 import { ReleasesComponent } from './releases/releases.component';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +23,7 @@ import { HttpService } from './http.service';
 import { LocalService } from './local.service';
 import { AuthService } from './auth.service';
 import { MovieService } from './movie.service';
+import { ReviewService } from './review.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { MovieService } from './movie.service';
     UserComponent,
     ReleasesComponent,
     MovieComponent,
+    ReviewsComponent
     HomeComponent
   ],
   imports: [
@@ -45,7 +49,8 @@ import { MovieService } from './movie.service';
     AuthService,
     HttpService,
     LocalService,
-    MovieService
+    MovieService,
+    ReviewService
   ],
   bootstrap: [
     AppComponent

@@ -1,2 +1,52 @@
-<h5>Current Week Releases</h5>
-<h5>Popular Released</h5>
+<h3 class="result">Current Week Releases</h3>
+<div class="table-container">
+  <table class="table table-striped">
+    <tbody>
+      <ng-container *ngFor="let release of currentWeekReleases">
+        <tr>
+          <td *ngIf="release.poster_path != null">
+            <img src="https://image.tmdb.org/t/p/w45{{release.poster_path}}" alt="{{release.title}}" />
+          </td>
+          <td *ngIf="release.poster_path == null">
+            <img src="assets/media_blank.png" alt="{{release.title}}" width="40" height="60" />
+          </td>
+          <td>
+            <a [routerLink]="['/title/', release.id]">{{release.title || release.original_name}}</a> ({{release.release_date?.split("-")[0] || release.first_air_date?.split("-")[0]}})
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+<div class="view-more">View:
+  <a href="#">
+    <strong>More releases</strong>
+  </a>
+</div>
+<h3 class="result">Popular Released</h3>
+<div class="table-container">
+  <table class="table table-striped">
+    <tbody>
+      <ng-container *ngFor="let release of popularReleased">
+        <ng-container *ngIf="release.media_type != 'person'">
+          <tr>
+            <td *ngIf="release.poster_path != null">
+              <img src="https://image.tmdb.org/t/p/w45{{release.poster_path}}" alt="{{release.title}}" />
+            </td>
+            <td *ngIf="release.poster_path == null">
+              <img src="assets/media_blank.png" alt="{{release.title}}" width="40" height="60" />
+            </td>
+            <td>
+              <a [routerLink]="['/title/', release.id]">{{release.title || release.original_name}}</a> ({{release.release_date?.split("-")[0] || release.first_air_date?.split("-")[0]}})
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+<div class="view-more">View:
+  <a href="#">
+    <strong>More releases</strong>
+  </a>
+</div>

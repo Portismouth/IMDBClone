@@ -20,4 +20,7 @@ export class LocalService {
     return this._http.post('/watchlist/' + userId, movieId);
   }
 
+  getReview(reviewId){
+    return this._http.get('/review/' + reviewId);
+  }
 }
