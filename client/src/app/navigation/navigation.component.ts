@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../http.service';
-import { ActivatedRoute, Params, Router, Route } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { LocalService } from '../local.service';
+import { ActivatedRoute, Params, Router, Route, NavigationEnd } from '@angular/router';
+import { User } from '../user';
 import * as $ from 'jquery';
 
 @Component({
@@ -10,13 +13,37 @@ import * as $ from 'jquery';
 })
 export class NavigationComponent implements OnInit {
   searchForm: any;
+  loggedIn: Boolean;
+  user: any;
 
   @Output() aTaskEventEmitter = new EventEmitter();
 
-  constructor(private _httpService: HttpService,private _router: Router) { }
+  constructor(
+    private _httpService: HttpService,
+    private _authService: AuthService,
+    private _localService: LocalService,
+    private _router: Router,
+    private _route: ActivatedRoute
+  ) {
+    this.searchForm = { query: "", type: "All" };
+    this.loggedIn = false;
+    this.user = new User();
+  }
 
   ngOnInit() {
-    this.searchForm = { query: "", type: "All" };
+
+    this._router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this._authService.checkSession().subscribe(data => {
+          if (data["status"] === true) {
+            this._localService.getUser(data["userId"]).subscribe(user => {
+              this.loggedIn = true;
+              this.user = user as User;
+            });
+          }
+        });
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -106,6 +133,13 @@ export class NavigationComponent implements OnInit {
     $("#autocomplete").html("");
     this.searchResultsFromService(this.searchForm.query, this.searchForm.type);
     this._router.navigate(['/results']);
+  }
+
+  logout() {
+    this._authService.logout().subscribe(data => {
+      this.loggedIn = false;
+      this._router.navigate(['home']);
+    });
   }
 
 }

@@ -64,6 +64,10 @@ module.exports = {
             res.send({ status: false })
         }
     },
+    logout: function (req, res) {
+        req.session.destroy();
+        res.send({ status: true });
+    },
     addToWatchlist: function (req, res) {
         let newWatchItem = new WatchItem({
             movieId: req.body.movieId,
