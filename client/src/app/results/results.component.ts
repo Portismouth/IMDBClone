@@ -12,6 +12,7 @@ export class ResultsComponent implements OnInit {
   constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
+    this.resultsList = "";
     this.resultsList = this._httpService.results;
   }
 

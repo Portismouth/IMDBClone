@@ -38,3 +38,9 @@ body {
     color: white;
     cursor: pointer;
 }
+
+h3 {
+    color:#A58500;
+    font-size:1.25em;
+    margin-top:1rem;
+}
