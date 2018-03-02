@@ -1,13 +1,16 @@
 <div *ngIf="authError == true">
   <div class="alert alert-danger" role="alert">
-    <p>Please <a [routerLink]="['/registration']">sign in</a> in to submit a review</p>
+    <p>Please
+      <a [routerLink]="['/registration']">sign in</a> in to submit a review</p>
   </div>
 </div>
 <form (submit)="submitReview()">
+  <label for="movieTitle">Movie Title</label>
+  <input type="text" class="form-control" name="reviewForm.movieTitle" [(ngModel)]="reviewForm.movieTitle" value="reviewForm.movieTitle">
   <label for="rating">Rating</label>
   <input type="number" class="form-control" name="reviewForm.rating" [(ngModel)]="reviewForm.rating" placeholder="Rate this movie">
-  <label for="title">Title</label>
-  <input type="text" class="form-control" name="reviewForm.title" [(ngModel)]="reviewForm.title" placeholder="Your review title">
+  <label for="reviewTitle">Review Title</label>
+  <input type="text" class="form-control" name="reviewForm.reviewTitle" [(ngModel)]="reviewForm.reviewTitle" placeholder="Your review title">
   <label for="text">Review</label>
   <textarea type="text" class="form-control" name="reviewForm.text" [(ngModel)]="reviewForm.text" placeholder="Your review title"></textarea>
   <button type="submit" class="btn btn-primary">Submit</button>

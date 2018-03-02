@@ -16,16 +16,18 @@ export class ReviewsComponent implements OnInit {
     private _movieService: MovieService,
     private _localService: LocalService,
     private _authService: AuthService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _router: Router,
   ) { }
 
   movieId;
-  reviewForm;
+  movieTitle;
+  reviewForm = { reviewTitle: "", text: "", rating: null, movieId: "", movieTitle: "" }
   authError: Boolean;
 
   ngOnInit() {
-    this.movieId = this._route.params["_value"].movieId
-    this.reviewForm = { title: "", text: "", rating: null, movieId: this.movieId };
+    this.movieId = this._route.params["_value"].movieId;
+    this.getMovieTitleFromService();
     console.log(this.reviewForm)
   }
 
@@ -37,13 +39,18 @@ export class ReviewsComponent implements OnInit {
         add.subscribe(res => {
           console.log(res);
         })
+        this._router.navigate(['/title/', this.movieId])
       } else {
         this.authError = true;
       }
     })
-    // let submit = this._localService.submitReviewToDb('5a987794e2dc2d04a4ee1261', this.reviewForm);
-    // submit.subscribe(res => {
-    //   console.log(res);
-    // });
   }
+
+  getMovieTitleFromService(){
+    let title = this._movieService.getMovieById(this.movieId);
+    title.subscribe(res => {
+      this.reviewForm = { reviewTitle: "", text: "", rating: null, movieId: this.movieId, movieTitle: res['title'] };
+    });
+  }
+  
 }

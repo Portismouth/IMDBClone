@@ -10,6 +10,8 @@ export class Movie {
         rating: string = "",
         director: string = "",
         release_date: string = "",
-        genres = []
+        genres = [],
+        vote_average: number = null,
+        vote_count: number = null
     ) {}
 }

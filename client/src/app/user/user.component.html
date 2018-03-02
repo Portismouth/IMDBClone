@@ -46,11 +46,17 @@
                 <div class="card-block">
                     <h4 class="card-title">Your Reviews</h4>
                     <p *ngIf="userReviews.length === 0" class="card-text">Loved or hated a movie or TV show? Write a review and share it with others!</p>
-                    <h5 *ngFor="let review of userReviews"><a href="#">{{review.title}}</a></h5>
+                    <ul class="list-group list-group-flush">
+                        <li *ngFor="let review of userReviews" class="list-group-item">
+                            <h4>Review for {{review.movieTitle}}</h4>
+                            <h5>{{review.reviewTitle}}</h5>
+                            <p>{{review.text}}</p>
+                        </li>
+                    </ul>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">
-                        <a href="#">Write a review</a>
+                        <a [routerLink]="['/releases']">Check out more movies to review!</a>
                     </small>
                 </div>
             </div>

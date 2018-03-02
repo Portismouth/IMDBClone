@@ -36,8 +36,6 @@ export class MovieComponent implements OnInit {
   recommendations = [];
   reviews = [];
 
-
-
   ngOnInit() {
     this._router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -56,7 +54,6 @@ export class MovieComponent implements OnInit {
   getMovieFromService() {
     let movReq = this._movieService.getMovieById(this.movieId);
     movReq.subscribe(res => {
-      console.log(res);
       this.movie['movieId'] = res['id'];
       this.movie['title'] = res['title'];
       this.movie['overview'] = res['overview'];
@@ -66,6 +63,9 @@ export class MovieComponent implements OnInit {
       this.movie['year'] = res['release_date'].substr(0, 4);
       this.movie['genres'] = res['genres'];
       this.movie['backdrop_path'] = res['backdrop_path'];
+      this.movie['vote_average'] = res['vote_average'];
+      this.movie['vote_count'] = res['vote_count'];
+      console.log(this.movie);
     });
   }
 
