@@ -3,12 +3,10 @@ var Schema = mongoose.Schema;
 var bcrypt = require("bcrypt-as-promised");
 var uniqueValidator = require("mongoose-unique-validator");
 
-var watchlistSchema = new Schema({
-    //title
-    //private: bool - default to true
-    //allowComment: default to false
-    //comments: []
-});
+var watchSchema = new Schema({
+    movieId: { type: Number },
+    _user: { type: Schema.Types.ObjectId, ref: "User" },
+}, { timestamps: true });
 
 var userSchema = new Schema({
     //name
@@ -41,8 +39,9 @@ var userSchema = new Schema({
         type: String
     },
     // //reviews
-    reviews: [{ type: Schema.Types.ObjectId, ref: 'Reviews' }],
-    watchlist: [{ type: Schema.Types.ObjectId, ref: 'Watch' }]
+    reviews: [{ 
+        type: Schema.Types.ObjectId, ref: 'Reviews' }],
+    watchlist: [watchSchema]
     // //ratings - []
     // //picture?
     // ratings: {

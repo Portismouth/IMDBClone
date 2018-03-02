@@ -12,6 +12,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
 const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'title/:movieId', component: MovieComponent },
+  { path: 'title/:movieId', component: MovieComponent },
   { path: 'reviews/:movieId', component: ReviewsComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'user', component: UserComponent },

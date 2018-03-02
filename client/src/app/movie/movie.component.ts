@@ -21,7 +21,8 @@ export class MovieComponent implements OnInit {
     private _localService: LocalService,
     private _reviewService: ReviewService,
     private _authService: AuthService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _router: Router,
   ) { }
 
   movie = new Movie();
@@ -35,7 +36,12 @@ export class MovieComponent implements OnInit {
   recommendations = [];
   reviews = [];
 
+
+
   ngOnInit() {
+    this._router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    }
     this.movieId = this._route.params["_value"].movieId;
     this.getMovieFromService();
     this.getStarsFromService();

@@ -14,9 +14,9 @@
       </nav>
     </div>
     <div class="row">
-      <div *ngIf="authError == true">
+      <div *ngIf="authError == true" class="col-12">
         <div class="alert alert-danger" role="alert">
-          <p>Please sign in</p>
+          <p>Please <a [routerLink]="['/registration']">sign in</a> to add to watchlist.</p>
         </div>
       </div>
       <div class="col-1 justify-content-center">
