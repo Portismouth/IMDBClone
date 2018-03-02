@@ -40,9 +40,9 @@
             <button class="btn btn-dark" id="dropdownBasic1" ngbDropdownToggle>Movies, TV
               <br>&amp; Releases</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button class="dropdown-item" (click)="search(popular)">Popular Movies</button>
+              <button class="dropdown-item">Popular Movies</button>
               <button class="dropdown-item">People</button>
-              <button class="dropdown-item">Releases</button>
+              <button class="dropdown-item" [routerLink]="['/releases/']">Releases</button>
             </div>
           </li>
           <li ngbDropdown class="nav-item d-inline-block">
