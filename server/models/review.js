@@ -6,7 +6,10 @@ var reviewSchema = new Schema({
     movieId: {
         type: Number
     },
-    title: {
+    movieTitle: {
+        type: String
+    },
+    reviewTitle: {
         type: String,
         required: [true, "Reviews must have a title."],
         minlength: [2, "The title must make sense."]

@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.currentWeekReleaseFromService();
     this.alreadyOutFromService();
-    this._router.navigate(['/home']);
   }
 
   currentWeekReleaseFromService(){

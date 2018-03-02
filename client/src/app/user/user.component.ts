@@ -41,6 +41,7 @@ export class UserComponent implements OnInit {
           for (let item in user['watchlist']) {
             this.user.watchlist.push(user['watchlist'][item]);
           }
+          console.log(this.userReviews);
         })
       } else {
         this._router.navigate(['/']);

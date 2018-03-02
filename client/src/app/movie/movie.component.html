@@ -16,20 +16,21 @@
     <div class="row">
       <div *ngIf="authError == true" class="col-12">
         <div class="alert alert-danger" role="alert">
-          <p>Please <a [routerLink]="['/registration']">sign in</a> to add to watchlist.</p>
+          <p>Please
+            <a [routerLink]="['/registration']">sign in</a> to add to watchlist.</p>
         </div>
       </div>
       <div class="col-1 justify-content-center">
         <a (click)="addToWatchList($event)">
-          <i class="material-icons" style="font-size: 3.5em; color: grey;" title="Add to watchlist">bookmark</i>
+          <i class="material-icons watchlist-icon" title="Add to watchlist">bookmark</i>
         </a>
       </div>
       <div class="col-7">
         <div class="row">
           <h2 style="margin: 0">{{movie.title}}
             <span>
-              <h4 style="display: inline-block">(
-                <a href="#">{{movie.year}})</a>
+              <h4 style="display: inline-block">
+                (<a href="#">{{movie.year}}</a>)
               </h4>
             </span>
           </h2>
@@ -45,6 +46,7 @@
       </div>
       <div class="col-4">
         <i class="material-icons" style="font-size: 40px">star</i>
+        <span class="medium align-middle">{{movie.vote_average}}/10</span>
       </div>
     </div>
     <div class="row">
@@ -74,7 +76,9 @@
     <div class="row">
       <div class="col-12">
         <h3>People who liked this also liked...</h3>
-        <a *ngFor="let rec of recommendations" [routerLink]="['/title/', rec.id]"><img style="margin: 5px" src="https://image.tmdb.org/t/p/w92/{{rec.poster_path}}"/></a>
+        <a *ngFor="let rec of recommendations" [routerLink]="['/title/', rec.id]">
+          <img style="margin: 5px" src="https://image.tmdb.org/t/p/w92/{{rec.poster_path}}" />
+        </a>
       </div>
       <!-- <ngb-pagination [collectionSize]="120" [(page)]="page" [maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
     </div>
@@ -88,12 +92,16 @@
     <div class="row">
       <div class="col-12">
         <h3>Reviews</h3>
-        <p *ngIf="reviews.length === 0">This title has no reviews. <a [routerLink]="['/reviews/', movieId]">Add one now!</a></p>
-        <ul> 
+        <p *ngIf="reviews.length === 0">This title has no reviews.
+          <a [routerLink]="['/reviews/', movieId]">Add one now!</a>
+        </p>
+        <ul>
           <li *ngFor="let review of reviews" style="list-style: none">
             <h5>{{review.author}} says...</h5>
-            <p>{{review.content | slice:0:100}}... <a *ngIf ="review.content.length >= 100" href="#">See more</a></p>
-          </li> 
+            <p>{{review.content | slice:0:100}}...
+              <a *ngIf="review.content.length >= 100" href="#">See more</a>
+            </p>
+          </li>
         </ul>
         <a *ngIf="reviews.length !== 0" [routerLink]="['/reviews/', movieId]">Add a review now!</a>
       </div>

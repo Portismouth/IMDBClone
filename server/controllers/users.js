@@ -94,9 +94,11 @@ module.exports = {
             })
     },
     submitReview: function (req, res) {
+        console.log(req.body)
         let newReview = new Review({
             movieId: req.body.movieId,
-            title: req.body.title,
+            movieTitle: req.body.movieTitle,
+            reviewTitle: req.body.reviewTitle,
             text: req.body.text,
             rating: req.body.rating
         });
